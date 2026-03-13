@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Story card hover effect */
+        .story-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .story-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Value card styles */
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Image overlay for story images */
+        .image-overlay {
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+    <!-- Hero Section with Unsplash/Pexels Image - Caring connection -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Pexels Image: caregiver and client sharing a warm moment -->
+        <img src="https://plus.unsplash.com/premium_photo-1681995557151-49d5fd660408?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Caregiver and client sharing a warm moment" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <!-- Replaced heart icon with logo, removed background container -->
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                OUR STORY
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Built on Care and Connection
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section - The Heart of Our Story (first paragraph) -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Logo replaces the heart icon, no background -->
+            <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+            <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed">
+                Eternity Care Services was founded with a simple goal in mind – to empower and embrace all, regardless of disability.
+            </p>
+        </div>
+    </section>
+
+    <!-- Where It All Began Section -->
+    <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1663036900619-7ae7f6c3f2c9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Small team of dedicated caregivers" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 image-overlay" style="background: linear-gradient(135deg, rgba(249,115,22,0.3), rgba(249,115,22,0.1));"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold">10+ Years Experience</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-star-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">Where It All Began</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    From Humble <span class="text-orange-600 dark:text-orange-400">Beginnings</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    What started as a small team of dedicated caregivers has since grown to be a team with over 10 years experience in providing support and care to our community, whilst always keeping the individuals we serve at the forefront of our minds.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    We began with a vision: to create a service where every person feels valued, respected, and empowered. Today, that vision continues to guide everything we do.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Why Families Trust Us -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-right">
+                <div class="inline-flex items-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <i class="ri-shield-heart-line text-blue-600 dark:text-blue-400 mr-2"></i>
+                    <span class="text-blue-600 dark:text-blue-400 font-medium">Why Families Trust Us</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    A Partnership Built on <span class="text-blue-600 dark:text-blue-400">Trust and Transparency</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Families choose Eternity Care Services because we treat their loved ones like our own. We take time to understand each person's unique story, preferences, and goals – then craft care that feels less like a service and more like support from someone who genuinely cares.
+                </p>
+                <ul class="space-y-3 pt-4">
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Consistent, compassionate caregivers who build real relationships</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Open communication and flexible, person‑centred planning</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Over a decade of trusted experience in the community</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-up">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1683140576836-c6fc0a9419b3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Happy client with caregiver" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute bottom-4 right-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                            <i class="ri-heart-3-fill mr-2"></i> Trusted by Families
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+   <section class="bg-red-50 dark:bg-gray-800/50 py-16 md:py-20">
+    <div class="container mx-auto px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-flex items-center justify-center p-2 bg-red-100 dark:bg-red-900/30 rounded-full mb-6">
+                <i class="ri-rocket-line text-red-600 dark:text-red-400 text-2xl mx-2"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                Our <span class="text-red-600 dark:text-red-400">Mission</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed mb-6">
+                To take a holistic approach to care in order to support the whole person, encourage independence, connections and overall wellbeing. We strive to collaborate with the individual and their families to tailor a care plan that is effective, safe and person‑centred whilst respecting an individual's preferences, values and cultural beliefs.
+            </p>
+            <p class="text-gray-700 dark:text-gray-200 text-lg md:text-xl font-medium italic">
+                At Eternity Care Services, you're part of our family. We're here on this journey with you, every step of the way.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Our Values Section -->
+   <section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center p-2 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-full mb-6">
+            <i class="ri-hearts-line text-[#97d700] dark:text-[#97d700] text-2xl mx-2"></i>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            Our <span class="text-[#97d700] dark:text-[#97d700]">Values</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+            These principles guide everything we do, every day.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <!-- Value 1: Collaboration -->
+        <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-2xl flex items-center justify-center mb-4">
+                <i class="ri-team-line text-3xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Collaboration</h3>
+            <p class="text-gray-600 dark:text-gray-400">Working together with participants and families to achieve shared goals.</p>
+        </div>
+
+        <!-- Value 2: Empowerment -->
+        <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-2xl flex items-center justify-center mb-4">
+                <i class="ri-user-star-line text-3xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Empowerment</h3>
+            <p class="text-gray-600 dark:text-gray-400">Helping people reach their full potential by supporting independence, confidence and self‑determination.</p>
+        </div>
+
+        <!-- Value 3: Respect and Integrity -->
+        <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-2xl flex items-center justify-center mb-4">
+                <i class="ri-shield-user-line text-3xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Respect and Integrity</h3>
+            <p class="text-gray-600 dark:text-gray-400">We act with honesty and uphold the dignity of every person in all we do.</p>
+        </div>
+
+        <!-- Value 4: Compassion -->
+        <div class="value-card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-2xl flex items-center justify-center mb-4">
+                <i class="ri-heart-pulse-fill text-3xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Compassion</h3>
+            <p class="text-gray-600 dark:text-gray-400">We treat all people with kindness and understanding – always placing them at the centre of our care.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Call to Action - Join Our Mission -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <i class="ri-heart-add-line text-5xl mb-4 inline-block text-white/90"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Be Part of Our Journey</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    Whether you're seeking support or want to join our team, we'd love to hear from you. Together, we can continue to empower and embrace every mind.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact-form" class="btn-hover bg-white text-blue-600 font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
+                        <i class="ri-phone-line mr-2 text-xl"></i>
+                        Contact Us
+                    </a>
+                    <a href="/our-team" class="btn-hover bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                        <i class="ri-briefcase-line mr-2 text-xl"></i>
+                        Join Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

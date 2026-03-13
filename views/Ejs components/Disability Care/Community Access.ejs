@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Access | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Card hover effect */
+        .benefit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .benefit-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 50%, rgba(59, 130, 246, 0.8) 100%);
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .dark .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.9) 50%, rgba(37, 99, 235, 0.85) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enquire button pulse */
+        .enquire-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Activity card image zoom */
+        .activity-image {
+            transition: transform 0.5s ease;
+        }
+        .activity-card:hover .activity-image {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Unsplash Image - Community connection -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Unsplash/Pexels Image: People enjoying community activity together -->
+        <img src="https://images.unsplash.com/photo-1657161102089-1b13806de5f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="People enjoying community activity together" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-group-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Community Access
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Stay Connected & Engaged with Your Community
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section (updated with logo and Eternity Care Services text) -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <!-- Logo replaces the heart icon -->
+                <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we believe that being socially active and connected to your community is essential for a fulfilling and independent life. Our Community Access & Social Participation services are designed to support you in engaging with activities that bring joy, companionship, and purpose—so you can continue living life on your terms.
+                </p>
+                <!-- Removed the See more and Disability Care buttons -->
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- What is Social & Community Participation Section with Image -->
+<section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side (Different Image) -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1732194438700-c7eb8cc16cb6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Social participation and connection" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold flex items-center">
+                            <i class="ri-group-line mr-2"></i> Social Connection
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-question-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">What is Social & Community Participation?</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Taking Part in Activities <span class="text-orange-600 dark:text-orange-400">You Enjoy</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Social and community participation means taking part in activities that you enjoy while staying connected with others. It's about being involved in your community, meeting new people, and engaging in social, recreational, or learning opportunities.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    For some, it may mean visiting a local café, attending a social group, or joining an exercise class. For others, it could be volunteering, learning new skills, or simply getting out and about with a companion. Whatever your interests, we are here to support you.
+                </p>
+                
+                <!-- Enquire Now Button -->
+                <div class="pt-4">
+                    <a href="/referral-foam" class="btn-hover inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <<!-- Why is it Important? Section -->
+<section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            Why is it <span class="text-[#97d700] dark:text-[#97d700]">Important?</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+            Being actively engaged in your community can transform your life in meaningful ways.
+        </p>
+    </div>
+
+    <!-- Benefits Grid - 6 cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Benefit 1 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-heart-3-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Feel Connected & Included</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Help you feel connected and included in your community.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-team-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Build Relationships</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Provide opportunities to build relationships and friendships.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-share-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Expand Social Network</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Expand your social network and sense of belonging.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-rocket-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Boost Confidence</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Boost confidence and independence.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-briefcase-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Skill Building</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Support skill-building for work or volunteering opportunities.</p>
+            </div>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="benefit-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700 flex items-start">
+            <div class="w-12 h-12 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-sun-line text-2xl text-[#97d700] dark:text-[#97d700]"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Active Lifestyle</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Encourage a more active and fulfilling lifestyle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Note -->
+    <div class="mt-10 text-center max-w-3xl mx-auto bg-[#97d700]/10 dark:bg-[#97d700]/20 p-6 rounded-2xl">
+        <p class="text-gray-700 dark:text-gray-300 text-lg">
+            Everyone's interests and needs change over time, and that's why we offer flexible support to help you try new activities, discover new hobbies, and find what truly makes you happy.
+        </p>
+    </div>
+
+    <!-- Enquire Now Button -->
+    <div class="text-center mt-12">
+        <a href="/referral-foam" class="btn-hover enquire-pulse inline-flex items-center bg-[#97d700] hover:bg-[#7fb000] text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300">
+            <i class="ri-chat-1-line mr-2 text-xl"></i>
+            Enquire Now
+        </a>
+    </div>
+</section>
+
+    <!-- Parallax Background Section: WHY CHOOSE US (updated to Eternity Care Services) -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/7551610/pexels-photo-7551610.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-star-smile-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">WHY CHOOSE US</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                
+                <div class="space-y-6 text-lg md:text-xl leading-relaxed">
+                    <p class="text-white/95">
+                        At Eternity Care Services, we believe everyone deserves to live in a place where they feel safe, supported, and independent. Our team works closely with you to design a living arrangement that fits your unique needs and aspirations. With years of experience in disability care, we offer compassionate and respectful services that prioritise your independence and well-being.
+                    </p>
+                    
+                    <p class="text-white/95">
+                        Our Individualised Living Options empower you to take control of your living situation while providing the right level of support to help you thrive. From tailored care to professional insights, we ensure every step of your journey is guided by empathy, understanding, and expertise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Interests Showcase -->
+   <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Activities & <span class="text-red-600 dark:text-red-400">Interests</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                Discover new hobbies and stay engaged with what you love
+            </p>
+        </div>
+
+        <!-- Activity Cards Grid - 4 cards with different images -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Activity 1: Café Visits -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1726863135026-5bdf04873cbf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Café visit" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="ri-cup-line text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 dark:text-white">Café Visits</h4>
+                </div>
+            </div>
+
+            <!-- Activity 2: Social Groups -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1664302225453-c44d5a55c211?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Social group" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="ri-group-line text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 dark:text-white">Social Groups</h4>
+                </div>
+            </div>
+
+            <!-- Activity 3: Exercise Classes -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1758562105780-92d288eef8b9?q=80&w=1350&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Exercise class" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="ri-run-line text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 dark:text-white">Exercise Classes</h4>
+                </div>
+            </div>
+
+            <!-- Activity 4: Volunteering -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Volunteering" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="ri-heart-3-line text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 dark:text-white">Volunteering</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Today Section (updated to Eternity Care Services) -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Us Today</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    If you're ready to explore how Eternity Care Services' Community Access options can work for you, get in touch with us today. Our team is ready to guide you through the process and support you in creating a social engagement plan that is as unique as you are.
+                </p>
+                
+                <!-- Phone Number and CTA -->
+                <div class="flex flex-col items-center justify-center space-y-6">
+                    <a href="tel: 1300 799 885" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                        1300 799 885
+                    </a>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                        <a href="/sil" class="btn-hover bg-white text-blue-700 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+                            See Our Accommodations
+                        </a>
+                        <a href="/referral-foam" class="btn-hover bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300">
+                            Enquire Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Hero image overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Form input focus */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Validation styling */
+        .form-input:invalid:not(:placeholder-shown):not(:focus) {
+            border-color: #ef4444;
+        }
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: #10b981;
+        }
+        .dark .form-input:valid:not(:placeholder-shown) {
+            border-color: #34d399;
+        }
+        
+        /* Select validation */
+        select:invalid {
+            color: #6b7280;
+        }
+        select:valid {
+            color: #1f2937;
+        }
+        .dark select:valid {
+            color: white;
+        }
+        
+        /* Required star styling */
+        .required-star {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Pexels Image - Feedback / conversation -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Pexels Image: person writing or giving feedback -->
+        <img src="https://plus.unsplash.com/premium_photo-1738733737564-14a54a870aff?q=80&w=1344&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Person sharing feedback" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-chat-3-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Feedback
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Your Voice Matters
+            </p>
+            <p class="text-white text-lg md:text-xl max-w-2xl mt-4 drop-shadow-md">
+                Help us improve by sharing your experience with Eternity Care Services.
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section with logo -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we are committed to providing the highest quality care. Your feedback—whether a compliment, suggestion, or concern—helps us understand what we're doing well and where we can improve. We genuinely value your input and use it to shape our services, ensuring that every person we support feels heard, respected, and empowered.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Your Feedback Matters Section -->
+   <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1478061653917-455ba7f4a541?q=80&w=1150&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Listening to feedback" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold flex items-center">
+                            <i class="ri-heart-3-line mr-2"></i> We Listen
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-question-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">Why Your Feedback Matters</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Your Voice <span class="text-orange-600 dark:text-orange-400">Shapes Our Care</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Every piece of feedback we receive is reviewed by our management team and used to make meaningful improvements. Whether you're praising a team member who made a difference or highlighting an area where we can do better, your insights help us grow.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    We take all feedback seriously and, where appropriate, will follow up with you directly to discuss your experience. Your privacy and confidentiality are always respected.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Feedback Form Section with validations -->
+<section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Share Your <span class="text-[#97d700] dark:text-[#97d700]">Feedback</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg">
+                We'd love to hear from you. Please fill out the form below.
+            </p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100 dark:border-gray-700">
+  <form id="feedbackForm" class="space-y-6" onsubmit="return handleFeedbackSubmit(event)">
+    <!-- Name - required -->
+    <div>
+        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            Your Name <span class="required-star">*</span>
+        </label>
+        <input type="text" 
+               name="name"
+               id="feedbackName"
+               placeholder="Enter your full name" 
+               required
+               minlength="2"
+               class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#97d700]/50 transition-all">
+    </div>
+
+    <!-- Email - required with email format -->
+    <div>
+        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            Your Email <span class="required-star">*</span>
+        </label>
+        <input type="email" 
+               name="email"
+               id="feedbackEmail"
+               placeholder="your@email.com" 
+               required
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+               title="Please enter a valid email address (e.g., name@domain.com)"
+               class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#97d700]/50 transition-all">
+    </div>
+
+    <!-- Rating (optional) -->
+    <div>
+        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            How would you rate your overall experience? (optional)
+        </label>
+        <div class="flex items-center space-x-4 flex-wrap">
+            <label class="flex items-center space-x-1">
+                <input type="radio" name="rating" value="1" class="w-4 h-4 text-[#97d700]">
+                <span>1</span>
+            </label>
+            <label class="flex items-center space-x-1">
+                <input type="radio" name="rating" value="2" class="w-4 h-4 text-[#97d700]">
+                <span>2</span>
+            </label>
+            <label class="flex items-center space-x-1">
+                <input type="radio" name="rating" value="3" class="w-4 h-4 text-[#97d700]">
+                <span>3</span>
+            </label>
+            <label class="flex items-center space-x-1">
+                <input type="radio" name="rating" value="4" class="w-4 h-4 text-[#97d700]">
+                <span>4</span>
+            </label>
+            <label class="flex items-center space-x-1">
+                <input type="radio" name="rating" value="5" class="w-4 h-4 text-[#97d700]">
+                <span>5</span>
+            </label>
+            <span class="text-sm text-gray-500 dark:text-gray-400">(1 = Poor, 5 = Excellent)</span>
+        </div>
+    </div>
+
+    <!-- Message - required -->
+    <div>
+        <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            Your Message <span class="required-star">*</span>
+        </label>
+        <textarea name="message" 
+                  id="feedbackMessage"
+                  rows="6" 
+                  placeholder="Please share your feedback in detail..." 
+                  required
+                  minlength="10"
+                  class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#97d700]/50 transition-all resize-none"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+        <button type="submit" id="feedbackSubmitBtn" class="btn-hover w-full bg-gradient-to-r from-[#97d700] to-[#7fb000] hover:from-[#7fb000] hover:to-[#6c9900] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center text-lg">
+            <i class="ri-send-plane-fill mr-3 text-xl"></i>
+            Submit Feedback
+        </button>
+    </div>
+
+    <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+        Your feedback is confidential and will be used to improve our services. For urgent matters, please call us directly.
+    </p>
+</form>
+        </div>
+    </div>
+</section>
+
+<!-- Alternative Feedback Methods + Privacy Note (merged) -->
+<section class="bg-red-50 dark:bg-gray-800/50 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                Other Ways to <span class="text-red-600 dark:text-red-400">Share Feedback</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">
+                If you prefer to give feedback in person or over the phone, we're always happy to hear from you.
+            </p>
+            
+            <!-- Contact Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-phone-line text-2xl text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Call Us</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Speak directly with our team</p>
+                    <a href="tel:1300513309" class="text-2xl font-bold text-red-600 dark:text-red-400 mt-2 block">1300 799 885</a>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-mail-line text-2xl text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Email Us</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Write to us anytime</p>
+                    <a href="mailto:feedback@eternitycare.com.au" class="text-lg font-medium text-red-600 dark:text-red-400 mt-2 block break-all">admin@eternitycs.com.au</a>
+                </div>
+            </div>
+
+            <!-- Privacy Note (white card) -->
+            <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 text-left">
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/40 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="ri-lock-line text-xl text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Your Privacy Matters</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                            Any personal information you provide will be handled in accordance with our Privacy Policy. We respect your confidentiality and will only use your details to respond to your feedback or improve our services. You may choose to provide feedback anonymously, but please note that we won't be able to respond if you don't provide contact details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+    <!-- Contact Us Today Section - FULL WIDTH (optional, but could be kept) -->
+    <section class="w-full bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 md:py-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Prefer to Talk?</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    If you'd rather speak with someone directly, our team is ready to listen.
+                </p>
+                <div class="flex justify-center mb-8">
+                    <a href="tel: 1300 799 885" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                      1300 799 885
+                    </a>
+                </div>
+                <p class="text-white/90 text-lg max-w-3xl mx-auto">
+                    We're here to help – your voice makes a difference.
+                </p>
+            </div>
+        </div>
+    </section>
+<br>
+    <%- include('../footer.ejs') %> 
+
+    <!-- Theme Toggle JavaScript (matches header system) -->
+ <!-- ============================================ -->
+<!-- COMPLETE FEEDBACK FORM JAVASCRIPT - COPY THIS -->
+<!-- ============================================ -->
+<script>
+    // ============================================
+    // FEEDBACK FORM HANDLER
+    // ============================================
+    
+    // Toast notification function
+    function showToast(message, type = 'success') {
+        // Remove any existing toast
+        const existingToast = document.querySelector('.toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        // Add icon based on type
+        const icon = type === 'success' ? 'ri-checkbox-circle-fill' : 'ri-error-warning-fill';
+        const iconColor = type === 'success' ? 'text-green-500' : 'text-red-500';
+        
+        toast.innerHTML = `
+            <div class="flex items-start">
+                <i class="${icon} ${iconColor} text-2xl mr-3"></i>
+                <div>
+                    <p class="font-medium ${type === 'success' ? 'text-green-600' : 'text-red-600'} dark:text-white">
+                        ${type === 'success' ? 'Success!' : 'Error!'}
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mt-1">${message}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                    <i class="ri-close-line text-xl"></i>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.remove();
+            }
+        }, 5000);
+    }
+
+    // Handle feedback form submission
+    async function handleFeedbackSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitButton = document.getElementById('feedbackSubmitBtn');
+        const originalButtonText = submitButton.innerHTML;
+        
+        // Get form values for validation
+        // Get form values for validation
+// Get form values for validation
+const name = formData.get('name');
+const email = formData.get('email');
+const message = formData.get('message');
+
+// Client-side validation
+if (!name || !email || !message) {
+    showToast('Please fill in all required fields', 'error');
+    return false;
+}
+
+// Name validation
+if (name.length < 2) {
+    showToast('Please enter a valid name (minimum 2 characters)', 'error');
+    return false;
+}
+
+// Email validation
+const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+if (!emailRegex.test(email)) {
+    showToast('Please enter a valid email address', 'error');
+    return false;
+}
+
+// Message validation
+if (message.length < 10) {
+    showToast('Please provide more details (minimum 10 characters)', 'error');
+    return false;
+}
+        // Show loading state
+        submitButton.innerHTML = '<i class="ri-loader-4-line animate-spin mr-3"></i> Submitting...';
+        submitButton.disabled = true;
+        
+        try {
+            // Convert FormData to URLSearchParams
+            const urlEncodedData = new URLSearchParams();
+            for (let [key, value] of formData.entries()) {
+                urlEncodedData.append(key, value);
+            }
+            
+            console.log('Sending feedback data...', Object.fromEntries(formData.entries()));
+            
+            const response = await fetch('/feedback-form', {
+                method: 'POST',
+                body: urlEncodedData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            
+            // Try to parse JSON response
+            let result;
+            try {
+                result = await response.json();
+            } catch (e) {
+                console.error('Could not parse JSON response:', e);
+                result = { success: false, error: 'Server returned an invalid response' };
+            }
+            
+            if (response.ok && result.success) {
+                // Show success message
+                showToast(result.message || 'Thank you for your feedback! Your input helps us improve our services.', 'success');
+                form.reset(); // Clear the form
+                
+                // Reset validation styling
+                document.querySelectorAll('#feedbackForm input, #feedbackForm select, #feedbackForm textarea').forEach(input => {
+                    input.classList.remove('border-green-500', 'border-red-500');
+                });
+                
+                // Scroll to top to show the message
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // Show error message from server or default
+                showToast(result.error || result.message || 'An error occurred. Please try again.', 'error');
+                console.error('Server error:', result);
+            }
+        } catch (error) {
+            console.error('Fetch Error:', error);
+            showToast('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Reset button
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+        }
+        
+        return false;
+    }
+
+    // Add real-time validation styling
+    document.addEventListener('DOMContentLoaded', function() {
+        const feedbackForm = document.getElementById('feedbackForm');
+        if (feedbackForm) {
+            // Add submit event listener
+            feedbackForm.addEventListener('submit', handleFeedbackSubmit);
+            
+            // Add input validation styling
+            const inputs = feedbackForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.add('border-green-500');
+                        this.classList.remove('border-red-500');
+                    } else {
+                        this.classList.add('border-red-500');
+                        this.classList.remove('border-green-500');
+                    }
+                });
+                
+                // Special handling for select
+                if (input.tagName === 'SELECT') {
+                    input.addEventListener('change', function() {
+                        if (this.value) {
+                            this.classList.add('border-green-500');
+                            this.classList.remove('border-red-500');
+                        } else {
+                            this.classList.add('border-red-500');
+                            this.classList.remove('border-green-500');
+                        }
+                    });
+                }
+            });
+        }
+        
+        console.log('Feedback form JavaScript loaded successfully');
+    });
+</script>
+
+<!-- Add toast styles -->
+<style>
+    .toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        max-width: 400px;
+    }
+    .dark .toast {
+        background: #1f2937;
+        color: white;
+    }
+    .toast.success {
+        border-left: 4px solid #10b981;
+    }
+    .toast.error {
+        border-left: 4px solid #ef4444;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Loading spinner animation */
+    .animate-spin {
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+
+
+</body>
+</html>

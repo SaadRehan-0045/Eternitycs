@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Care | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Card hover effect */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .service-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Service image zoom */
+        .service-image {
+            transition: transform 0.5s ease;
+        }
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Pexels Image - Mental health support -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Pexels Image: calm, supportive conversation -->
+        <img src="https://plus.unsplash.com/premium_photo-1661766873874-968139498244?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Supportive mental health conversation" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-mental-health-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Mental Health Care
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Compassionate Support for Your Wellbeing
+            </p>
+            <!-- <p class="text-white text-lg md:text-xl max-w-2xl mt-4 drop-shadow-md">
+                We provide holistic mental health care that empowers you to build resilience, achieve recovery goals, and live a fulfilling life.
+            </p> -->
+        </div>
+    </section>
+
+    <!-- Introduction Section with logo -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we understand that mental health is a vital part of your overall wellbeing. Our Mental Health Care services are designed to provide compassionate, person‑centred support that helps you navigate life's challenges, build coping strategies, and work towards your personal recovery goals. Whether you need psychosocial recovery coaching, therapeutic support, or simply a listening ear, we're here for you every step of the way.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Mental Health Care? Section with Image -->
+   <section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1681966746285-067dd8097c76?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Person receiving mental health support" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold flex items-center">
+                            <i class="ri-mental-health-line mr-2"></i> Psychosocial Recovery
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-question-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">What is Mental Health Care?</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Building Resilience, Achieving <span class="text-orange-600 dark:text-orange-400">Recovery Goals</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Mental health care at Eternity Care Services means walking alongside you as you navigate your unique journey. Our experienced team provides psychosocial recovery coaching, emotional support, and practical strategies to help you manage daily challenges, strengthen your coping skills, and build a life that feels meaningful to you.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    We take a holistic approach, recognising that mental wellbeing is influenced by many factors—your environment, relationships, physical health, and personal goals. Together, we'll create a support plan that respects your values and empowers you to move forward.
+                </p>
+                
+                <!-- Enquire Now Button -->
+                <div class="pt-4">
+                    <a href="/referral-foam" class="btn-hover inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Our Mental Health Services Grid -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Our Mental Health <span class="text-blue-600 dark:text-blue-400">Services</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                We offer a range of supports tailored to your individual needs and recovery journey.
+            </p>
+        </div>
+
+        <!-- Services Grid - 6 Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Service 1: Psychosocial Recovery Coaching -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1663051364962-580a9a4d4f15?q=80&w=1242&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Recovery coaching session" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-mental-health-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Psychosocial Recovery Coaching</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Work one‑on‑one with a recovery coach to build resilience, develop coping strategies, and achieve your personal recovery goals.</p>
+                </div>
+            </div>
+
+            <!-- Service 2: Therapeutic Support -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661757081103-9c5db7015e4d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Therapy session" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-psychotherapy-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Therapeutic Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Access counselling and therapeutic interventions that help you process emotions, improve wellbeing, and develop healthy coping mechanisms.</p>
+                </div>
+            </div>
+
+            <!-- Service 3: Daily Living Skills -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1663076086189-ec997b1bf5f4?q=80&w=679&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Learning daily skills" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-home-heart-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Daily Living Skills</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Build confidence in everyday tasks such as budgeting, meal preparation, and household management to foster independence.</p>
+                </div>
+            </div>
+
+            <!-- Service 4: Social & Community Connection -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1681842857879-aebd383a9227?q=80&w=1183&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Social connection" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-group-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Social & Community Connection</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Engage in social activities, peer support groups, and community events to reduce isolation and build meaningful relationships.</p>
+                </div>
+            </div>
+
+            <!-- Service 5: NDIS Support Coordination -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1682093576023-d7de0f2f7529?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="NDIS support coordination" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-funds-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">NDIS Support Coordination</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We help you navigate the NDIS, connect with mental health providers, and make the most of your funding to support your recovery.</p>
+                </div>
+            </div>
+
+            <!-- Service 6: Family & Carer Support -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661692189399-1f4acebca10b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Family support" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-heart-pulse-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Family & Carer Support</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">We provide guidance and respite for families and carers, recognising that mental health recovery is a shared journey.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enquire Now Button -->
+        <div class="text-center mt-12">
+            <a href="/referral-foam" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300">
+                <i class="ri-chat-1-line mr-2 text-xl"></i>
+                Enquire Now
+            </a>
+        </div>
+    </section>
+<br>
+  <!-- How We Support You Section -->
+<section class="bg-red-50 dark:bg-gray-800/50 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                How We <span class="text-red-600 dark:text-red-400">Support You</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
+                At Eternity Care Services, we believe that mental health support should be as unique as you are. Our team works collaboratively with you, your family, and other providers to create a care plan that reflects your goals, values, and aspirations. We're here to walk alongside you—through challenges and successes—as you build a life of meaning and connection.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                Whether you're seeking short‑term support during a difficult period or ongoing care to maintain your wellbeing, we're committed to providing a safe, non‑judgmental space where you can be yourself.
+            </p>
+        </div>
+    </div>
+</section>
+
+<br>
+    <!-- Parallax Background Section: Your Wellbeing, Our Priority -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://plus.unsplash.com/premium_photo-1681996698396-ff569c31b6ea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-heart-pulse-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Your Wellbeing, Our Priority</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95 mb-6">
+                    We know that reaching out for support can feel daunting. That's why we prioritise creating a warm, welcoming environment where you feel heard, respected, and empowered. Your journey to better mental health starts here—with a team that truly cares.
+                </p>
+            </div>
+        </div>
+    </section>
+<br>
+    <!-- Contact Us Today Section - FULL WIDTH -->
+    <section class="w-full bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 md:py-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Us Today</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    Ready to start your mental health journey? Reach out to our friendly team to learn more about our services or book a consultation.
+                </p>
+                
+                <!-- Phone Number -->
+                <div class="flex justify-center mb-8">
+                    <a href="tel:1300 799 885" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                       1300 799 885
+                    </a>
+                </div>
+
+                <!-- Description -->
+                <p class="text-white/90 text-lg max-w-3xl mx-auto mb-10">
+                    Let Eternity Care Services support you in building resilience, finding balance, and living the life you deserve.
+                </p>
+
+                <!-- Final CTA Button -->
+                <div>
+                    <a href="/contact-form" class="btn-hover inline-flex items-center bg-white text-blue-700 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl">
+                        <i class="ri-mental-health-line mr-2"></i>
+                        Get Support Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+    <%- include('../footer.ejs') %> 
+
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

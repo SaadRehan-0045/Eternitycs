@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Care Journey | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+        /* Ensure logo floats with animation */
+        .eternity-logo {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+   
+
+    <!-- Pure Content - No Boxes, No Containers -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-16">
+        
+        <!-- Logo (replaced icon) -->
+        <div class="mb-6">
+            <img src="neee.png" style="width: 75px; height: 75px;" alt="Eternity Care" class="eternity-logo">
+        </div>
+
+        <!-- Heading -->
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 dark:text-white mb-4 max-w-4xl">
+            Ready to Start Your <span class="text-red-600 dark:text-red-400">Care Journey?</span>
+        </h2>
+
+        <!-- Decorative Line -->
+        <div class="w-24 h-1 bg-red-600 rounded-full mb-6"></div>
+
+        <!-- Description -->
+        <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl text-center mb-10 max-w-3xl leading-relaxed">
+            Contact us today for a free, no-obligation consultation and discover how 
+            <span class="font-semibold text-red-600 dark:text-red-400">Eternity Care Services</span> 
+            can support you or your loved one with personalized care solutions.
+        </p>
+
+        <!-- Features - Simple List -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                <i class="ri-customer-service-line text-red-500 text-xl"></i>
+                <span>24/7 Support</span>
+            </div>
+            <span class="text-gray-300 dark:text-gray-600">•</span>
+            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                <i class="ri-user-heart-line text-red-500 text-xl"></i>
+                <span>Personalized Care</span>
+            </div>
+            <span class="text-gray-300 dark:text-gray-600">•</span>
+            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                <i class="ri-heart-line text-red-500 text-xl"></i>
+                <span>No Obligation</span>
+            </div>
+        </div>
+
+       <!-- CTA Button -->
+        <a href="tel:1300 799 885" class="inline-flex items-center justify-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 md:px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg md:text-xl group mb-8">
+            <i class="ri-phone-line mr-2 text-xl md:text-2xl group-hover:animate-pulse"></i>
+            <span>Free Consultation: 1300 799 885</span>
+            <i class="ri-arrow-right-line ml-2 text-xl md:text-2xl group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+    </div>
+
+    <script>
+        // Theme functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            updateThemeUI('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeUI('light');
+        }
+        
+        function updateThemeUI(theme) {
+            if (themeIcon && themeText) {
+                themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-1.5 sm:mr-2 text-base sm:text-lg' : 'ri-moon-line mr-1.5 sm:mr-2 text-base sm:text-lg';
+                themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

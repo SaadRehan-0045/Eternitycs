@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation: SIL & SDA | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Card hover effect */
+        .info-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .info-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 50%, rgba(59, 130, 246, 0.8) 100%);
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .dark .parallax-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(30, 64, 175, 0.9) 50%, rgba(37, 99, 235, 0.85) 100%);
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Accommodation card image zoom */
+        .accommodation-image {
+            transition: transform 0.5s ease;
+        }
+        .accommodation-card:hover .accommodation-image {
+            transform: scale(1.05);
+        }
+
+        /* Property card styling */
+        .property-card {
+            transition: all 0.3s ease;
+        }
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Unsplash Image - Modern accessible home -->
+    <section class="relative w-full h-96 lg:h-[550px] overflow-hidden">
+        <!-- Unsplash/Pexels Image: Modern accessible home exterior -->
+        <img src="https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+             alt="Modern accessible home" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-home-heart-fill text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Accommodation: SIL & SDA
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Find the Right Home with the Right Support
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+                    <i class="ri-home-8-line text-blue-600 dark:text-blue-400 text-2xl mx-2"></i>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Best of Homecare (BHC), we provide safe, comfortable, and fully supported living options through Supported Independent Living (SIL) and Specialist Disability Accommodation (SDA). Whether you need daily assistance or a purpose-built home, we help you find the right accommodation to match your needs and independence goals.
+                </p>
+                <div class="mt-8">
+                    <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>See more</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                    <span class="mx-3 text-gray-300 dark:text-gray-600">|</span>
+                    <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        <span>Accommodation</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIL & SDA Cards Section -->
+    <section class="container mx-auto px-4 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- SIL Card -->
+            <div class="info-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Supported Independent Living shared home" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-home-4-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Supported Independent Living (SIL)</h2>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        SIL is a type of support that helps individuals with disabilities live as independently as possible in a shared or individual home. It includes:
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Personalised daily living support, such as cooking, cleaning, and personal care.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">24/7 or flexible assistance based on individual needs.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">A focus on independence, skill-building, and community participation.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SDA Card -->
+            <div class="info-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="Specialist Disability Accommodation purpose-built home" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-building-4-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Specialist Disability Accommodation (SDA)</h2>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        SDA is designed for individuals with high support needs who require purpose-built homes with accessibility features. It includes:
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Specially designed housing for improved mobility and safety.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Access to high-level support while maintaining independence.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-checkbox-circle-fill text-blue-600 dark:text-blue-400 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Different housing types, including shared homes and private units, tailored to individual requirements.</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Background Section: Explore Our Available Accommodations -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-home-8-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Explore Our Available Accommodations</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95 mb-6">
+                    See more
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
+                    We offer a range of Supported Independent Living (SIL) and Specialist Disability Accommodation (SDA) options tailored to different needs and preferences. Our homes are designed to provide comfort, accessibility, and the right level of support to help you live as independently as possible.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Options Gallery -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Our <span class="text-blue-600 dark:text-blue-400">Accommodation</span> Options
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                Whether you're looking for a shared living arrangement or a fully customised space, we have options to suit your lifestyle.
+            </p>
+        </div>
+
+        <!-- Property Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Property 1: Shared Living SIL -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/164522/pexels-photo-164522.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Shared living accommodation" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">SIL</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">Shared Living</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Modern Shared Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">4-bedroom home with communal areas, garden, and 24/7 support staff.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Property 2: Private SDA Unit -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Private SDA unit" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 text-xs font-semibold px-3 py-1 rounded-full">SDA</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">Private Unit</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Accessible Apartment</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">2-bedroom fully accessible apartment with modern amenities and smart home features.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Property 3: SIL Group Home -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="SIL group home" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">SIL</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">Group Home</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Community Living Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">5-bedroom home with recreational areas and tailored daily support.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Property 4: High Support SDA -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/276551/pexels-photo-276551.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="High support SDA" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 text-xs font-semibold px-3 py-1 rounded-full">SDA</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">High Support</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Purpose-Built Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Specialised housing with ceiling hoists, wide doorways, and assistive technology.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Property 5: SIL Apartment -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="SIL apartment" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">SIL</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">Independent Living</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Modern Apartment Complex</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Individual apartments with shared common areas and flexible support options.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Property 6: Rural SDA Property -->
+            <div class="property-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-56 overflow-hidden">
+                    <img src="https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         alt="Rural SDA property" 
+                         class="accommodation-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 text-xs font-semibold px-3 py-1 rounded-full">SDA</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400 text-sm">Rural Setting</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Tranquil Country Home</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Spacious accessible home on large block with gardens and outdoor areas.</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 font-medium text-sm hover:underline flex items-center">
+                        View Details <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- See More Link -->
+        <div class="text-center mt-10">
+            <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                <span>See more accommodation options</span>
+                <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Description Paragraph -->
+    <section class="container mx-auto px-4 pb-8">
+        <div class="max-w-4xl mx-auto bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8">
+            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                Whether you're looking for a shared living arrangement with like-minded housemates or a fully customised space designed for high-support needs, we offer a variety of accommodation options to suit your lifestyle. Our team is here to guide you through the process, ensuring you find a home that enhances your independence, comfort, and well-being.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Us Today Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 rounded-3xl p-10 md:p-16 shadow-2xl text-white">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Us Today</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-6 text-white/90 max-w-3xl mx-auto">
+                    At BHC, we work closely with you, your family, and support networks to help you choose the right accommodation option. Our team ensures you meet NDIS funding requirements and guides you through the process, from application to moving in.
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed mb-8 text-white/90 max-w-3xl mx-auto">
+                    Whether you're looking for greater independence through SIL or need specialised housing under SDA, we are here to help you every step of the way.
+                </p>
+                
+                <!-- Phone Number -->
+                <div class="flex justify-center mb-6">
+                    <a href="tel:1300513309" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                        1300 513 309
+                    </a>
+                </div>
+
+                <!-- Description -->
+                <p class="text-white/90 text-lg max-w-3xl mx-auto mb-8">
+                    To explore your options and start your journey towards the perfect home.
+                </p>
+
+                <!-- Final CTA Button -->
+                <div>
+                    <a href="#" class="btn-hover inline-flex items-center bg-white text-blue-700 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl">
+                        <i class="ri-chat-1-line mr-2"></i>
+                        Let's Talk About Your Options
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | Eternity Care Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Testimonials hero background - now orange themed */
+        .testimonials-hero-bg {
+            background: linear-gradient(rgba(249, 115, 22, 0.85), rgba(251, 146, 60, 0.8)), 
+                        url('https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .dark .testimonials-hero-bg {
+            background: linear-gradient(rgba(194, 65, 12, 0.9), rgba(234, 88, 12, 0.85)), 
+                        url('https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Testimonial card styling */
+        .testimonial-card {
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.2);
+        }
+        
+        .dark .testimonial-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(251, 146, 60, 0.3);
+        }
+        
+        /* Quote icon styling */
+        .quote-icon {
+            opacity: 0.1;
+            transform: scale(1.5);
+        }
+        
+        /* Section background */
+        .testimonials-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .dark .testimonials-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .testimonial-card {
+                margin-bottom: 1rem;
+            }
+            .testimonial-card p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Testimonials Page -->
+    <main class="testimonials-bg min-h-screen py-8 sm:py-12 md:py-16">
+        <div class="container mx-auto px-3 sm:px-4">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+                    Real Stories from <span class="text-orange-600 dark:text-orange-400">Our Eternity Family</span>
+                </h2>
+                <p class="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2">
+                    Read what our clients, their families, and support coordinators have to say about our aged care and disability support services.
+                </p>
+            </div>
+
+            <!-- Testimonials Grid - 3 cards per row on desktop, 1 on mobile, 2 on tablet -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
+                
+                <!-- Testimonial 1 - NDIS Participant -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-wheelchair-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">James Wilson</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">NDIS Participant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "Eternity Care has helped me gain more independence through their disability support services. My support worker 
+                        assists me with community access - we go to the gym, library, and I've even started volunteering at 
+                        the local op shop. Highly recommend their NDIS services."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-calendar-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Community Access Program</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 - SIL Client -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-home-heart-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">David & Emma Patterson</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">SIL Residents</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "We've been living in Eternity Care's SIL accommodation for 18 months now. The house is beautiful, and the 24/7 
+                        support means we always have help when we need it. The staff respect our choices and help us with 
+                        cooking, cleaning, and managing our health."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-building-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Supported Independent Living</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 - Support Coordinator -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-user-settings-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Michael Roberts</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Support Coordinator</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "I've worked with many providers over the years, and Eternity Care consistently stands out for their professionalism 
+                        and genuine care. They're responsive, flexible, and always put the participant first. When I need a 
+                        reliable provider for my clients, Eternity Care is my first call."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-star-smile-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">5+ years partnership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4: Homecare (Support at Home) -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-home-heart-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Patricia Evans</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Home Care Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "My Support at Home worker helps me with light cleaning, meal prep, and grocery shopping. She's so friendly 
+                        and respectful of my routines. I can stay in my own home and maintain my independence, which is exactly 
+                        what I wanted. The office staff are always lovely to deal with too."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-calendar-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Support at Home, 3 days/week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5: Mental Health Care & Community Nursing -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-mental-health-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Anthony Clarke</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Mental Health & Nursing Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "The combination of mental health support and community nursing has been life-changing. My support worker helps me 
+                        stay on top of my wellness plan, and the nurse manages my medications and monitors my health. I feel more stable 
+                        and hopeful about the future. Thank you to the whole team."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-nurse-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Mental Health + Community Nursing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6: Transport & Day Programs -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-bus-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Noah & Helen K.</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Parents of Day Program Participant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "Our son attends the Day Program three times a week, and the transport team picks him up and drops him home safely. 
+                        He loves the activities and has made real friends. The drivers are patient and know how to support him. 
+                        It's given him a wonderful routine and us some well-deserved breathing space."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-palette-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Transport + Day Programs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 7 - Day Program Participant -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-palette-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Lisa's Mum</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Parent of Day Program Participant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "Lisa has been attending Eternity Care's Day Program for 6 months, and the change in her has been amazing. 
+                        She looks forward to going each week, has made friends, and loves the art activities. The staff 
+                        are patient, creative, and truly care about each participant."
+                        <span class="block mt-2 text-xs text-gray-500 dark:text-gray-400">- Lisa's Mum</span>
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-building-2-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Day Program Participant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 8 - Disability Transport -->
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-200 dark:border-gray-700 shadow-lg relative">
+                    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-600 dark:text-orange-400 quote-icon">
+                        <i class="ri-double-quotes-r text-4xl sm:text-5xl"></i>
+                    </div>
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-orange-100 dark:bg-orange-900/40 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                            <i class="ri-car-line text-orange-600 dark:text-orange-400 text-xl sm:text-2xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white truncate">Robert's Family</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">Disability Transport Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 italic text-sm sm:text-base leading-relaxed flex-grow">
+                        "The transport team at Eternity Care has been a game-changer for our family. They pick Robert up for his 
+                        appointments, therapy sessions, and social outings. The drivers are trained, patient, and the 
+                        vehicles are well-equipped. It's given Robert independence and us peace of mind."
+                    </p>
+                    <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                            <i class="ri-map-pin-line mr-2 flex-shrink-0"></i>
+                            <span class="truncate">Disability Transport Services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            updateThemeUI('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateThemeUI('light');
+        }
+        
+        // Update theme UI elements
+        function updateThemeUI(theme) {
+            if (themeIcon && themeText) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'ri-sun-line mr-2';
+                    themeText.textContent = 'Light Mode';
+                } else {
+                    themeIcon.className = 'ri-moon-line mr-2';
+                    themeText.textContent = 'Dark Mode';
+                }
+            }
+        }
+        
+        // Toggle theme function
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateThemeUI('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI('dark');
+            }
+        }
+        
+        // Add event listener for theme toggle
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+        });
+
+        // Testimonial card hover effects
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

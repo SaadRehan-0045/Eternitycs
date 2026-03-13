@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Team card hover effect */
+        .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .team-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.8) 0%, rgba(37, 99, 235, 0.7) 50%, rgba(59, 130, 246, 0.6) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.8) 50%, rgba(37, 99, 235, 0.7) 100%);
+        }
+
+        /* Button hover */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+    <!-- Hero Section with Unsplash Image -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Unsplash Image: Diverse healthcare team - high quality, compassionate care theme -->
+        <img src="https://plus.unsplash.com/premium_photo-1681843086055-9fe43f654696?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Compassionate care team" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <!-- Logo instead of icon -->
+           
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                OUR TEAM
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-lg md:text-xl max-w-3xl drop-shadow-md">
+                The team behind your journey
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Logo added here, replacing the heart icon -->
+            <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                Meet Our <span class="text-blue-600 dark:text-blue-400">Team</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                At Eternity Care Services, our dedicated office staff work tirelessly behind the scenes to ensure every client receives the support they deserve. 
+                They embody our core values of <span class="font-semibold text-blue-600 dark:text-blue-400">compassion, assistance, reassurance, and empathy</span> in everything they do. 
+                Get to know the friendly faces committed to making a difference in the lives of our participants and their families.
+            </p>
+        </div>
+    </section>
+<!-- Team Grid Section -->
+<section class="container mx-auto px-4 pb-16 md:pb-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        
+        
+        <!-- Team Member 3 - Biya Augustine -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">HR & Compliance</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#b3ff00] to-[#97d700] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">BA</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Biya Augustine</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">HR & Compliance</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Officer</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 4 - John Koutsopoulos -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Intake</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#97d700] to-[#7fb000] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">JK</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">John Koutsopoulos</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Intake Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 5 - Sarah Woodburne -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Care Partner</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#b3ff00] to-[#97d700] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">SW</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Sarah Woodburne</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Care Partner</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">(Support at Home)</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 6 - Natalie Bannister -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Service Delivery</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#7fb000] to-[#6c9900] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">NB</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Natalie Bannister</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Service Delivery</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 7 - Deepa Jinson -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Support</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#97d700] to-[#7fb000] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">DJ</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Deepa Jinson</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Support Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 8 - Seda Boylu -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Support</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#b3ff00] to-[#97d700] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">SB</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Seda Boylu</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Support Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 9 - Rincy Roshan -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">PHO Manager</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#7fb000] to-[#6c9900] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">RR</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Rincy Roshan</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Primary Health Organisation</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Manager</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 10 - Charmi Patel -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">SIL</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#97d700] to-[#7fb000] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">CP</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Charmi Patel</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">SIL Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 11 - Mira Basily -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">SIL</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#b3ff00] to-[#97d700] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">MB</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Mira Basily</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">SIL Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 12 - Milanie San Juan -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">SIL</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#7fb000] to-[#6c9900] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">MS</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Milanie San Juan</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">SIL Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 13 - Kristy Wooden -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">SIL</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#97d700] to-[#7fb000] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">KW</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Kristy Wooden</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">SIL Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+
+        <!-- Team Member 14 - Maria Allport -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div class="relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-[#97d700] text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">Day Program</span>
+                </div>
+                <div class="w-full h-64 bg-gradient-to-br from-[#b3ff00] to-[#97d700] flex items-center justify-center">
+                    <span class="text-white text-7xl font-bold drop-shadow-lg">MA</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Maria Allport</h3>
+                <p class="text-[#97d700] dark:text-[#97d700] font-medium">Day Program Coordinator</p>
+                <!-- Social links removed -->
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Call to Action - Join Our Team (updated with provided text) -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 md:py-20 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <i class="ri-team-line text-white text-5xl mb-4 inline-block"></i>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Want to Join Our Team?
+                </h2>
+                <p class="text-white text-lg md:text-xl mb-8 opacity-95">
+                    If you're passionate about empowering individuals and embracing all abilities, we'd love to hear from you.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <!-- <a href="#" class="btn-hover bg-white text-blue-700 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+                        <i class="ri-briefcase-line mr-2 text-xl"></i>
+                        View Our Staff Benefits
+                    </a> -->
+                    <a href="/contact-form" class="btn-hover bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                        <i class="ri-mail-send-line mr-2 text-xl"></i>
+                        Contact Us
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <br>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

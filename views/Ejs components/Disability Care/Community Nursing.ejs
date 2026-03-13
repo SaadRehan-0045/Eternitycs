@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Nursing | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Card hover effect */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .service-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+     /* Fixed overlay using RGB (151, 215, 0) with gradient variation */
+.parallax-overlay {
+    background: linear-gradient(135deg, rgba(151, 215, 0, 0.95) 0%, rgba(151, 215, 0, 0.9) 50%, rgba(151, 215, 0, 0.85) 100%);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+.dark .parallax-overlay {
+    background: linear-gradient(135deg, rgba(130, 185, 0, 0.95) 0%, rgba(130, 185, 0, 0.9) 50%, rgba(130, 185, 0, 0.85) 100%);
+}
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Service image zoom */
+        .service-image {
+            transition: transform 0.5s ease;
+        }
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Pexels Image - Community nursing care -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Pexels Image: nurse visiting a client at home -->
+        <img src="https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Community nurse visiting client at home" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-nurse-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Community Nursing
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Professional Nursing Care in the Comfort of Your Home
+            </p>
+            <!-- <p class="text-white text-lg md:text-xl max-w-2xl mt-4 drop-shadow-md">
+                Our experienced community nurses provide compassionate clinical care, helping you manage your health and wellbeing while staying independent at home.
+            </p> -->
+        </div>
+    </section>
+
+    <!-- Introduction Section with logo -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, our Community Nursing team brings professional, compassionate healthcare directly to you. Whether you need post‑hospital care, wound management, medication support, or assistance managing a chronic condition, our registered nurses work with you and your family to create a personalised care plan that promotes recovery, independence, and peace of mind.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- What is Community Nursing? Section with Image -->
+<section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1661292317662-19633df66a0b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Nurse providing care at home" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold flex items-center">
+                            <i class="ri-nurse-line mr-2"></i> Registered Nurses
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-question-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">What is Community Nursing?</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    Expert Clinical Care <span class="text-orange-600 dark:text-orange-400">at Your Doorstep</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Community nursing brings skilled nursing care into your home, reducing the need for hospital visits and allowing you to recover or manage your health in familiar surroundings. Our nurses are experienced in a wide range of clinical areas and work closely with your GP, specialists, and allied health providers to ensure coordinated, holistic care.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Whether you need short‑term support after a procedure or ongoing assistance with a long‑term condition, we're here to provide the clinical expertise and compassionate support you deserve.
+                </p>
+                
+                <!-- Enquire Now Button -->
+                <div class="pt-4">
+                    <a href="/referral-foam" class="btn-hover inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Our Community Nursing Services Grid -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Our Community Nursing <span class="text-blue-600 dark:text-blue-400">Services</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                We offer a comprehensive range of nursing services tailored to your individual health needs.
+            </p>
+        </div>
+
+        <!-- Services Grid - 6 Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Service 1: Wound Care -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661310195863-939875174587?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Wound care" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-first-aid-kit-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Wound Care</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Professional assessment and management of acute or chronic wounds, including post‑surgical care and pressure injuries.</p>
+                </div>
+            </div>
+
+            <!-- Service 2: Medication Management -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1702599235404-fd059bbe8743?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Medication management" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-medicine-bottle-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Medication Management</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Assistance with medication reminders, administration, and monitoring to ensure you take the right medications at the right time.</p>
+                </div>
+            </div>
+
+            <!-- Service 3: Chronic Disease Management -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1681966589359-d3468355e1b3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Chronic disease management" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-heart-pulse-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Chronic Disease Management</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Support for conditions like diabetes, heart disease, and respiratory disorders, including monitoring, education, and care coordination.</p>
+                </div>
+            </div>
+
+            <!-- Service 4: Post‑Hospital Care -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661632381984-e75dc43958e3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Post-hospital care" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-hospital-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Post‑Hospital Care</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Smooth transition from hospital to home with nursing support to aid recovery, prevent complications, and reduce readmission risk.</p>
+                </div>
+            </div>
+
+            <!-- Service 5: Palliative & End‑of‑Life Care -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1681492825507-38720b45cb99?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Palliative care" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-heart-3-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Palliative & End‑of‑Life Care</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Compassionate nursing care focused on comfort, dignity, and quality of life for individuals and their families.</p>
+                </div>
+            </div>
+
+            <!-- Service 6: Health Monitoring & Assessments -->
+            <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661549548201-8d593a61a055?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Health monitoring" 
+                         class="service-image w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+                        <i class="ri-eye-line text-xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Health Monitoring & Assessments</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Regular checks of vital signs, health assessments, and early intervention to keep you on track with your health goals.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enquire Now Button -->
+        <div class="text-center mt-12">
+            <a href="/referral-foam" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-full shadow-lg transition-all duration-300">
+                <i class="ri-chat-1-line mr-2 text-xl"></i>
+                Enquire Now
+            </a>
+        </div>
+    </section>
+<br>
+    <!-- How We Support You Section -->
+<section class="bg-red-50 dark:bg-gray-800/50 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                How We <span class="text-red-600 dark:text-red-400">Support You</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-8">
+                Our community nurses work collaboratively with you, your family, and your healthcare team to develop a care plan that meets your clinical needs and respects your personal preferences. We focus on empowering you with knowledge and skills to manage your health confidently, while providing the hands‑on care you need.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                From initial assessment to ongoing reviews, we're committed to delivering high‑quality, evidence‑based nursing care that helps you live well at home.
+            </p>
+        </div>
+    </div>
+</section>
+<br>
+    <!-- Parallax Background Section: Why Choose Us - FIXED: overlay now darker in light mode -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/16830003/pexels-photo-16830003.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-star-smile-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Why Choose Us</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95 mb-6">
+                    At Eternity Care Services, our community nurses are not only highly skilled clinicians—they're compassionate listeners who take the time to understand your unique situation. We believe that the best care happens when you feel heard, respected, and supported. With years of experience in community and aged care, our team delivers nursing excellence with a personal touch.
+                </p>
+            </div>
+        </div>
+    </section>
+<br>
+    <!-- Contact Us Today Section - FULL WIDTH -->
+    <section class="w-full bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 md:py-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Us Today</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    Ready to discuss your nursing needs? Reach out to our friendly team to learn more about our Community Nursing services or arrange an in‑home assessment.
+                </p>
+                
+                <!-- Phone Number -->
+                <div class="flex justify-center mb-8">
+                    <a href="tel: 1300 799 885" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                        1300 799 885
+                    </a>
+                </div>
+
+                <!-- Description -->
+                <p class="text-white/90 text-lg max-w-3xl mx-auto mb-10">
+                    Let Eternity Care Services bring expert nursing care to your doorstep—so you can focus on what matters most.
+                </p>
+
+                <!-- Final CTA Button -->
+                <div>
+                    <a href="/contact-form" class="btn-hover inline-flex items-center bg-white text-blue-700 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl">
+                        <i class="ri-nurse-line mr-2"></i>
+                        Get Started with Community Nursing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+    <%- include('../footer.ejs') %> 
+
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

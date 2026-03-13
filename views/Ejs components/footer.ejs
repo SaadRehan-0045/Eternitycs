@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternity Care Services - Footer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'spin-slow': 'spin 2s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+        
+        /* Custom footer with white background in light mode, dark background in dark mode, and faint background image */
+        .custom-footer {
+            position: relative;
+            background-color: white;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-top: 4px solid #97d700; /* Added green-yellow top border (151,215,0) */
+        }
+        .dark .custom-footer {
+            background-color: #111827; /* gray-900 */
+            border-top: 4px solid #b0e030; /* Slightly lighter for dark mode but still green-yellow family */
+        }
+        .custom-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://plus.unsplash.com/premium_photo-1664302163944-cfbe76709490?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .custom-footer > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Form input styling – light mode */
+        .form-input {
+            background-color: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1f2937;
+            width: 100%;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(151, 215, 0, 0.5);
+            border-color: transparent;
+        }
+        .dark .form-input {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(151, 215, 0, 0.8);
+        }
+
+        /* Validation styling */
+        .form-input:invalid:not(:placeholder-shown) {
+            border-color: #ef4444;
+        }
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: #10b981;
+        }
+        .dark .form-input:valid:not(:placeholder-shown) {
+            border-color: #34d399;
+        }
+
+        /* Placeholder styling */
+        .form-input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 0.9rem;
+        }
+        .dark .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Label styling */
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #1f2937;
+        }
+        .dark .form-label {
+            color: white;
+        }
+
+        /* Required star color */
+        .required-star {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+
+        /* Icon colors – using #97d700 in light mode, lighter variant in dark mode */
+        .footer-icon {
+            color: #97d700;
+        }
+        .dark .footer-icon {
+            color: #c8ff4d; /* lighter green-yellow for dark mode */
+        }
+
+        /* Social media link styling */
+        .social-link {
+            display: flex;
+            align-items: center;
+            color: #1f2937;
+            transition: all 0.2s ease;
+        }
+        .social-link:hover {
+            color: #97d700;
+            padding-left: 0.5rem;
+        }
+        .dark .social-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .dark .social-link:hover {
+            color: #c8ff4d;
+        }
+
+        /* Send message button – green-yellow background with dark text */
+        .send-button {
+            background-color: #97d700;
+            color: #1f2937;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 4px rgba(151, 215, 0, 0.2);
+            width: 100%;
+        }
+        .send-button:hover {
+            background-color: #87c000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px -4px rgba(151, 215, 0, 0.3);
+        }
+        .send-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .dark .send-button {
+            background-color: #b0e030; /* lighter for dark mode */
+            color: #111827;
+        }
+        .dark .send-button:hover:not(:disabled) {
+            background-color: #97d700;
+        }
+
+        /* Card backgrounds with blur */
+        .footer-card {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .footer-card:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .dark .footer-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .footer-card:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Section headings */
+        .footer-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .dark .footer-heading {
+            color: white;
+        }
+
+        /* Divider */
+        .footer-divider {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .dark .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contact links */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            color: #4b5563;
+            transition: color 0.2s ease;
+        }
+        .contact-link:hover {
+            color: #97d700;
+        }
+        .dark .contact-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .dark .contact-link:hover {
+            color: #c8ff4d;
+        }
+
+        /* Text colors */
+        .footer-text {
+            color: #4b5563;
+        }
+        .dark .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .footer-text-muted {
+            color: #6b7280;
+        }
+        .dark .footer-text-muted {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .footer-text-strong {
+            color: #1f2937;
+            font-weight: 500;
+        }
+        .dark .footer-text-strong {
+            color: white;
+        }
+
+        /* Brand heading in green-yellow */
+        .brand-heading {
+            color: #97d700;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .dark .brand-heading {
+            color: #c8ff4d;
+        }
+        
+        /* Logo image styling */
+        .footer-logo {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            margin: 0 0.25rem;
+            filter: brightness(0.8);
+            transition: filter 0.3s ease;
+        }
+        .dark .footer-logo {
+            filter: brightness(1.2);
+        }
+
+        /* Toast notification styles */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+        }
+        .dark .toast {
+            background: #1f2937;
+            color: white;
+        }
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex items-end">
+    <!-- Footer placed at bottom for preview – now with white background, faint image, green-yellow top border, and brand heading -->
+    <footer class="custom-footer w-full">
+        <!-- Added brand heading above the container -->
+        <div class="container mx-auto px-4 pt-8 pb-2">
+            <div class="text-center lg:text-left">
+                <h1 class="brand-heading">Eternity Care Services</h1>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 pb-12">
+            <!-- Parent Container -->
+            <div class="flex flex-col lg:flex-row gap-8">
+                
+                <!-- Child 1: We're Here To Listen - form with validations -->
+                <div class="lg:w-1/3">
+                    <div class="footer-card">
+                        <h2 class="footer-heading">
+                            <i class="ri-message-3-line mr-2 footer-icon"></i>
+                            We're Here To Listen
+                        </h2>
+                        <form id="footerContactForm" class="space-y-4">
+                            <!-- Name - required -->
+                            <div>
+                                <label class="form-label">
+                                    Name<span class="required-star">*</span>
+                                </label>
+                                <input type="text" 
+                                       name="name"
+                                       id="footer_name"
+                                       placeholder="Your name" 
+                                       required
+                                       class="form-input">
+                            </div>
+                            <!-- Email - required with email format -->
+                            <div>
+                                <label class="form-label">
+                                    Email<span class="required-star">*</span>
+                                </label>
+                                <input type="email" 
+                                       name="email"
+                                       id="footer_email"
+                                       placeholder="your.email@example.com" 
+                                       required
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                       title="Please enter a valid email address (e.g., name@domain.com)"
+                                       class="form-input">
+                            </div>
+                            <!-- Contact - required -->
+                            <div>
+                                <label class="form-label">
+                                    Contact<span class="required-star">*</span>
+                                </label>
+                                <input type="tel" 
+                                       name="contact"
+                                       id="footer_contact"
+                                       placeholder="Phone number" 
+                                       required
+                                       pattern="[0-9\s\+\-\(\)]{8,}"
+                                       title="Please enter a valid phone number (minimum 8 digits)"
+                                       class="form-input">
+                            </div>
+                            <!-- Subject - required -->
+                            <div>
+                                <label class="form-label">
+                                    Subject<span class="required-star">*</span>
+                                </label>
+                                <input type="text" 
+                                       name="subject"
+                                       id="footer_subject"
+                                       placeholder="What is this about?" 
+                                       required
+                                       class="form-input">
+                            </div>
+                            <!-- Details - required -->
+                            <div>
+                                <label class="form-label">
+                                    Details<span class="required-star">*</span>
+                                </label>
+                                <textarea rows="3" 
+                                          name="details"
+                                          id="footer_details"
+                                          placeholder="Tell us more..." 
+                                          required
+                                          class="form-input"></textarea>
+                            </div>
+                            <!-- Send message button -->
+                            <button type="submit" id="footerSubmitBtn" class="send-button">
+                                <i class="ri-send-plane-fill"></i> Send a message
+                            </button>
+                        </form>
+                        <p class="footer-text-muted text-xs mt-4 italic text-center">We'll get back to you within 24h</p>
+                    </div>
+                </div>
+
+                <!-- Child 2: Social Media Links -->
+                <div class="lg:w-1/4">
+                    <div class="footer-card">
+                        <h2 class="footer-heading">
+                            <i class="ri-share-line mr-2 footer-icon"></i>
+                            Follow Us
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="flex flex-col space-y-3">
+                                <a href="https://www.facebook.com/people/Eternity-Care-Services/61587021774551/?mibextid=wwXIfr&rdid=CTStL3qDZYvjntbb&share_url=https%253A%252F%252Fwww.facebook.com%252Fshare%252F1CDgVMDgLN%252F%253Fmibextid%253DwwXIfr" class="social-link">
+                                    <i class="ri-facebook-fill text-2xl mr-3 footer-icon"></i>
+                                    <span class="font-medium">Facebook</span>
+                                </a>
+                                <!-- <a href="#" class="social-link">
+                                    <i class="ri-twitter-fill text-2xl mr-3 footer-icon"></i>
+                                    <span class="font-medium">Twitter</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="ri-linkedin-fill text-2xl mr-3 footer-icon"></i>
+                                    <span class="font-medium">LinkedIn</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="ri-instagram-line text-2xl mr-3 footer-icon"></i>
+                                    <span class="font-medium">Instagram</span>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="ri-youtube-line text-2xl mr-3 footer-icon"></i>
+                                    <span class="font-medium">YouTube</span>
+                                </a> -->
+                            </div>
+                            <div class="footer-divider pt-4">
+                                <p class="footer-text-muted text-sm italic">Connect with us on social media for updates and care tips</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Child 3: Contact & Locations -->
+                <div class="lg:w-2/5">
+                    <div class="footer-card">
+                        <h2 class="footer-heading">
+                            <i class="ri-contacts-line mr-2 footer-icon"></i>
+                            Contact & Locations
+                        </h2>
+                        
+                        <!-- Location -->
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <i class="ri-map-pin-line footer-icon mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <h3 class="footer-text-strong">Our Location</h3>
+                                    <p class="footer-text text-sm">
+                                      Suite 535, 1 Queens Rd, Melbourne VIC 3004
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="space-y-3 mb-6">
+                            <a href="mailto:admin@eternitycs.com.au" class="contact-link">
+                                <i class="ri-mail-line footer-icon mr-3 text-xl"></i>
+                                <span>admin@eternitycs.com.au</span>
+                            </a>
+                            <a href="tel:1300 799 885" class="contact-link">
+                                <i class="ri-phone-line footer-icon mr-3 text-xl"></i>
+                                <span>1300 799 885</span>
+                            </a>
+                            <!-- <a href="tel:1300513309" class="contact-link">
+                                <i class="ri-smartphone-line footer-icon mr-3 text-xl"></i>
+                                <span>1300 513 309</span>
+                            </a> -->
+                        </div>
+
+                        <!-- Opening Hours -->
+                        <div class="space-y-3 footer-divider pt-6">
+                            <div class="flex items-start">
+                                <i class="ri-time-line footer-icon mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <h3 class="footer-text-strong mb-2">Opening Hours</h3>
+                                    <div class="footer-text text-sm space-y-1">
+                                        <p><span class="footer-text-strong">Monday – Saturday:</span> 8am - 8pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Copyright -->
+                        <div class="mt-8 footer-divider pt-6">
+                            <p class="footer-text text-sm flex items-center justify-center">
+                                Copyright © 2026. All rights reserved - 
+                                <img src="neee.png" class="footer-logo" alt="Eternity Care">
+                                Eternity Care Services
+                            </p>
+                            <!-- <p class="footer-text-muted text-xs mt-2 text-center">
+                                Compassionate, Reliable, Professional Home Care Services
+                            </p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // THEME FUNCTIONALITY
+        // ============================================
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Toggle theme function (if toggle ever added)
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // ============================================
+        // FOOTER FORM HANDLER
+        // ============================================
+        
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            // Remove any existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            // Add icon based on type
+            const icon = type === 'success' ? 'ri-checkbox-circle-fill' : 'ri-error-warning-fill';
+            const iconColor = type === 'success' ? 'text-green-500' : 'text-red-500';
+            
+            toast.innerHTML = `
+                <div class="flex items-start">
+                    <i class="${icon} ${iconColor} text-2xl mr-3"></i>
+                    <div>
+                        <p class="font-medium ${type === 'success' ? 'text-green-600' : 'text-red-600'} dark:text-white">
+                            ${type === 'success' ? 'Success!' : 'Error!'}
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mt-1">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 5000);
+        }
+
+        // Handle footer form submission
+        async function handleFooterFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const submitButton = document.getElementById('footerSubmitBtn');
+            const originalButtonText = submitButton.innerHTML;
+            
+            // Get form values for validation
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const contact = formData.get('contact');
+            const subject = formData.get('subject');
+            const details = formData.get('details');
+            
+            // Client-side validation
+            if (!name || !email || !contact || !subject || !details) {
+                showToast('Please fill in all required fields', 'error');
+                return false;
+            }
+            
+            // Email validation
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+            if (!emailRegex.test(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return false;
+            }
+            
+            // Phone validation (minimum 8 digits)
+            const phoneDigits = contact.replace(/\D/g, '');
+            if (phoneDigits.length < 8) {
+                showToast('Please enter a valid phone number (minimum 8 digits)', 'error');
+                return false;
+            }
+            
+            // Subject validation
+            if (subject.length < 3) {
+                showToast('Please enter a more detailed subject', 'error');
+                return false;
+            }
+            
+            // Details validation
+            if (details.length < 10) {
+                showToast('Please provide more details (minimum 10 characters)', 'error');
+                return false;
+            }
+            
+            // Show loading state
+            submitButton.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Sending...';
+            submitButton.disabled = true;
+            
+            try {
+                // Convert FormData to URLSearchParams
+                const urlEncodedData = new URLSearchParams();
+                for (let [key, value] of formData.entries()) {
+                    urlEncodedData.append(key, value);
+                }
+                
+                const response = await fetch('/contact-form', {
+                    method: 'POST',
+                    body: urlEncodedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                // Try to parse JSON response
+                let result;
+                try {
+                    result = await response.json();
+                } catch (e) {
+                    console.error('Could not parse JSON response:', e);
+                    result = { success: false, error: 'Server returned an invalid response' };
+                }
+                
+                if (response.ok && result.success) {
+                    // Show success message
+                    showToast(result.message || 'Thank you for contacting us! We will get back to you within 24 hours.', 'success');
+                    form.reset(); // Clear the form
+                    
+                    // Reset validation styling
+                    document.querySelectorAll('#footerContactForm input, #footerContactForm textarea').forEach(input => {
+                        input.classList.remove('border-green-500', 'border-red-500');
+                    });
+                } else {
+                    // Show error message from server or default
+                    showToast(result.error || result.message || 'An error occurred. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                showToast('Network error. Please check your connection and try again.', 'error');
+            } finally {
+                // Reset button
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            }
+            
+            return false;
+        }
+
+        // Add real-time validation styling
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerForm = document.getElementById('footerContactForm');
+            if (footerForm) {
+                // Add submit event listener
+                footerForm.addEventListener('submit', handleFooterFormSubmit);
+                
+                // Add input validation styling
+                const inputs = footerForm.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('input', function() {
+                        if (this.checkValidity()) {
+                            this.classList.add('border-green-500');
+                            this.classList.remove('border-red-500');
+                        } else {
+                            this.classList.add('border-red-500');
+                            this.classList.remove('border-green-500');
+                        }
+                    });
+                });
+            }
+            
+            console.log('Footer form JavaScript loaded successfully');
+        });
+    </script>
+</body>
+</html>

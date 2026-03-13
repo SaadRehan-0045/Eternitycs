@@ -1,0 +1,93 @@
+<!-- Comprehensive Services Section with Background Image -->
+<section id="stats-section" class="relative bg-contain bg-center  py-16 md:py-20" 
+         style="background-image: url('main.jpg');">
+    <!-- Dark overlay for readability -->
+    <div class="absolute inset-0 bg-black/60"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <!-- Logo + Company Name (combined) -->
+            <div class="flex justify-center items-center mb-6">
+                <img src="neee.png" style="width: 65px; height: 65px;" alt="Eternity Care" class="eternity-logo">
+                <span class="text-white text-2xl md:text-3xl font-bold ml-4">Eternity Care Services</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+               Holistic Support <span class="text-[#97d700] dark:text-[#97d700]">Designed Around You</span>
+            </h2>
+            <p class="text-white/90 text-lg">
+                At Eternity Care Services we put you at the forefront of care. <br>
+                We understand that care should be personalised and tailored to <br>
+                your individual needs. Through working collaboratively with you, we will develop a care plan that aims to achieve the best outcomes for your well-being.
+            </p>
+        </div>
+
+        <!-- Stats Row - 3 columns on all screens, number + label inline -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 max-w-3xl mx-auto">
+            <!-- Stat 1: Clients Supported -->
+            <div class="flex flex-col items-center justify-center">
+                <div id="stat1" class="stat-number text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#97d700] dark:text-[#97d700]" data-target="500" data-suffix="+">0+</div>
+                <div class="text-xs sm:text-sm text-white/80 text-center">Clients Supported</div>
+            </div>
+            <!-- Stat 2: Years Experience -->
+            <div class="flex flex-col items-center justify-center">
+                <div id="stat2" class="stat-number text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#97d700] dark:text-[#97d700]" data-target="10" data-suffix="+">0+</div>
+                <div class="text-xs sm:text-sm text-white/80 text-center">Years Experience</div>
+            </div>
+            <!-- Stat 3: Person-Centred -->
+            <div class="flex flex-col items-center justify-center">
+                <div id="stat3" class="stat-number text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#97d700] dark:text-[#97d700]" data-target="100" data-suffix="%">0%</div>
+                <div class="text-xs sm:text-sm text-white/80 text-center">Person-Centred</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Stats counter animation (same as before)
+document.addEventListener('DOMContentLoaded', function() {
+    const statElements = document.querySelectorAll('.stat-number');
+    
+    statElements.forEach(el => {
+        const suffix = el.dataset.suffix || '';
+        el.textContent = '0' + suffix;
+    });
+
+    function animateStats() {
+        statElements.forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            let current = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let startTime = null;
+
+            function updateNumber(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
+                current = Math.min(Math.ceil(increment * (progress / 16)), target);
+                el.textContent = current + suffix;
+                if (current < target) {
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            }
+            requestAnimationFrame(updateNumber);
+        });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const section = document.getElementById('stats-section');
+    if (section) {
+        observer.observe(section);
+    }
+});
+</script>

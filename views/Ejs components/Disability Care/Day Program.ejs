@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Program | Eternity Care Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Activity card hover effect */
+        .activity-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .activity-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Parallax background effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+      /* Fixed overlay using RGB (151, 215, 0) with gradient variation */
+.parallax-overlay {
+    background: linear-gradient(135deg, rgba(151, 215, 0, 0.95) 0%, rgba(151, 215, 0, 0.9) 50%, rgba(151, 215, 0, 0.85) 100%);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+.dark .parallax-overlay {
+    background: linear-gradient(135deg, rgba(130, 185, 0, 0.95) 0%, rgba(130, 185, 0, 0.9) 50%, rgba(130, 185, 0, 0.85) 100%);
+}
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Enquire button pulse */
+        .enquire-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Step card styling */
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-3px);
+            background-color: #f0f9ff;
+        }
+        .dark .step-card:hover {
+            background-color: #1e3a8a20;
+        }
+
+        /* Activity image zoom */
+        .activity-image {
+            transition: transform 0.5s ease;
+        }
+        .activity-card:hover .activity-image {
+            transform: scale(1.05);
+        }
+
+        /* Icon animation */
+        .step-icon {
+            animation: float 3s ease-in-out infinite;
+            color: #2563eb;
+        }
+        .dark .step-icon {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<%- include('../header.ejs') %> 
+<br>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+    <!-- Hero Section with Unsplash Image - Day program activities -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Unsplash/Pexels Image: Group activity in day program -->
+        <img src="https://plus.unsplash.com/premium_photo-1683140633722-9625a92dd1a3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Day program group activity" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <i class="ri-sun-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Day Programs
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-6"></div>
+            <p class="text-white text-xl md:text-2xl max-w-3xl drop-shadow-md font-medium">
+                Empowering Lives Through Engagement & Growth
+            </p>
+        </div>
+    </section>
+
+    <!-- Introduction Section (updated with logo and Eternity Care Services text) -->
+    <section class="container mx-auto px-4 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <!-- Logo replaces the calendar icon -->
+                <img src="neee.png" style="width: 100px; height: 100px;" alt="Eternity Care Services" class="eternity-logo mx-auto mb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                    Day Programs <span class="text-blue-600 dark:text-blue-400">at Eternity Care Services</span>
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+                    At Eternity Care Services, we offer innovative NDIS Day Programs across Melbourne, designed to empower individuals with disabilities by fostering social engagement, skill development, and personal growth. Our programs provide a safe and stimulating environment where participants can engage in meaningful activities tailored to their interests and needs.
+                </p>
+                <!-- Removed the See more and Disability Care buttons -->
+            </div>
+        </div>
+    </section>
+
+<!-- Our Day Centres Section with Image -->
+<section class="bg-white dark:bg-gray-800 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Image Side (Different Image) -->
+            <div class="lg:w-1/2 animate-fade-in-right">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://plus.unsplash.com/premium_photo-1664301906677-f060e95aee16?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Day centre activities" 
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg">
+                        <p class="text-orange-600 dark:text-orange-400 font-semibold flex items-center">
+                            <i class="ri-team-line mr-2"></i> Qualified Professionals
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Side -->
+            <div class="lg:w-1/2 space-y-6 animate-fade-in-up">
+                <div class="inline-flex items-center p-2 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                    <i class="ri-building-line text-orange-600 dark:text-orange-400 mr-2"></i>
+                    <span class="text-orange-600 dark:text-orange-400 font-medium">Our Day Centres</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+                    A Space for <span class="text-orange-600 dark:text-orange-400">Growth & Connection</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    Our Day Centres focus on providing immense fulfillment through positive engagement in social activities. Staffed by qualified and well-trained professionals, we aim to help clients develop social and life skills throughout the day. We strive to create a comfortable space where clients can express themselves and enjoy their time with us.
+                </p>
+                
+                <!-- Enquire Now Button -->
+                <div class="pt-4">
+                    <a href="/referral-foam" class="btn-hover inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+                        <i class="ri-chat-1-line mr-2 text-xl"></i>
+                        Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Program Description (formerly "Best Of Homecare" section) -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                Our Day Programs
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 text-lg max-w-3xl mx-auto">
+                Our Day Program is a structured and flexible service that offers a variety of activities tailored to meet the individual needs and preferences of participants. Whether it's learning new skills, socialising with peers, or enjoying recreational activities, our day programs are designed to foster independence, confidence, and community connection.
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 text-lg mt-4 max-w-3xl mx-auto">
+                We offer a variety of activities designed to enrich the lives of our participants:
+            </p>
+        </div>
+    </section>
+
+    <!-- Program Activities Grid - 4 Cards -->
+    <section class="container mx-auto px-4 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Activity 1: Music for Wellbeing -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1681995956182-6d0126ba0d49?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Music therapy session" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-music-2-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Music for Wellbeing</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Music provides psychological, social, and emotional benefits. Our sessions, supported by staff, aim to bring peace and tranquility, tailored to meet individual needs. Music activities can be enjoyed one-on-one, in small groups, or large groups, depending on preference.
+                    </p>
+                    <!-- <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a> -->
+                </div>
+            </div>
+
+            <!-- Activity 2: Creative Art Sessions -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1661306607381-6662d8a31fcb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Creative art session" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-palette-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Creative Art Sessions</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        We value art as a key form of self-expression. During our Day Program, we cultivate a safe environment where clients can freely express themselves through artistic means, such as painting and drawing. This empowers individuals to create and share art in a non-judgmental setting, fostering a stronger sense of self.
+                    </p>
+                    <!-- <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a> -->
+                </div>
+            </div>
+
+            <!-- Activity 3: Board Games -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1758612899072-9c463434cfb7?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Board games activity" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-gamepad-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Board Games</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        We offer a selection of board games aimed at bringing fun and enjoyment to all clients. Board games are known for benefits like increased brain function, stress reduction, and promoting laughter. Our staff facilitate these games to ensure positive engagement and overall enjoyment.
+                    </p>
+                    <!-- <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a> -->
+                </div>
+            </div>
+
+            <!-- Activity 4: Leisure & Life Skills -->
+            <div class="activity-card bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://plus.unsplash.com/premium_photo-1681491194596-c8e67a15871a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Life skills development" 
+                         class="activity-image w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-xl flex items-center justify-center mr-4">
+                            <i class="ri-brain-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Leisure Activities and Life Skill Development</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        We help clients improve key life skills with strong social utility, including road safety, public transport use, positive communication, handling money, and technology use. We believe in empowering individuals to be as engaged and connected with society as possible.
+                    </p>
+                    <!-- <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                        LEARN MORE <i class="ri-arrow-right-line ml-1"></i>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+    <!-- Parallax Background Section 1: Who Can Join -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-user-star-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Who Can Join?</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95 mb-6">
+                    Our Day Program is open to individuals with disabilities seeking structured daytime care and social opportunities. Whether you're looking for assistance with daily activities or wish to connect with others, our program is tailored to support your needs.
+                </p>
+            </div>
+        </div>
+    </section>
+<br>
+<br>
+    <!-- How to Get Started Section (updated with red theme) -->
+<section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            How to <span class="text-red-600 dark:text-red-400">Get Started</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 text-lg max-w-3xl mx-auto">
+            Joining Eternity Care Services' Day Program is a simple and supportive process designed to ensure you get the most out of your experience. From the initial consultation to tailored assessments and ongoing support, we guide you through every step. Our team will help you understand your NDIS funding, personalise your program based on your needs, and ensure a smooth transition into engaging activities that promote independence, social connections, and personal growth.
+        </p>
+    </div>
+
+    <!-- Steps Grid with Remixicon Icons -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        
+        <!-- Step 1: Contact Us -->
+        <div class="step-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="flex items-start">
+                <div class="step-icon mr-3 text-2xl w-8 h-8 flex items-center justify-center">
+                    <i class="ri-phone-line text-red-600 dark:text-red-400"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Contact Us</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Reach out to our friendly team at Eternity Care Services to discuss your needs, goals, and expectations from the program. Whether you're looking for social engagement, skill development, or structured daytime support, we'll guide you through the available options and help you understand how our program can best support you.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Check Your NDIS Funding -->
+        <div class="step-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="flex items-start">
+                <div class="step-icon mr-3 text-2xl w-8 h-8 flex items-center justify-center">
+                    <i class="ri-funds-line text-red-600 dark:text-red-400"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Check Your NDIS Funding</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Before enrolling in the program, it's important to ensure you have the appropriate NDIS funding available under your plan. Our team can help you understand your funding eligibility and guide you on how to allocate the necessary budget for day program participation. If you're unsure, we can also assist you in navigating NDIS plan reviews or modifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Personalised Assessment -->
+        <div class="step-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="flex items-start">
+                <div class="step-icon mr-3 text-2xl w-8 h-8 flex items-center justify-center">
+                    <i class="ri-file-list-line text-red-600 dark:text-red-400"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Personalised Assessment</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Once your funding is confirmed, we'll conduct a detailed assessment to better understand your specific requirements, interests, and preferences. This helps us tailor the program to ensure you get the most out of your experience, whether it's social activities, skill-building sessions, or therapeutic engagements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Join the Program -->
+        <div class="step-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="flex items-start">
+                <div class="step-icon mr-3 text-2xl w-8 h-8 flex items-center justify-center">
+                    <i class="ri-calendar-check-line text-red-600 dark:text-red-400"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Join the Program</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        After the assessment, we'll finalise the details and set up a schedule that works best for you. Whether you choose to attend a few days a week or regularly participate, we ensure a smooth transition into the program so you feel comfortable and supported from day one.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Ongoing Support & Progress Monitoring -->
+        <div class="step-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+            <div class="flex items-start">
+                <div class="step-icon mr-3 text-2xl w-8 h-8 flex items-center justify-center">
+                    <i class="ri-heart-pulse-line text-red-600 dark:text-red-400"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Ongoing Support & Progress Monitoring</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        At Eternity Care Services, we are committed to your continuous growth and well-being. Our team will regularly check in with you to assess your experience, gather feedback, and make any necessary adjustments to your activities. We work alongside you and your support network to ensure you're getting the most value from our day program.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Note -->
+        <div class="step-card bg-red-50 dark:bg-red-900/20 rounded-2xl p-6 shadow-md col-span-1 md:col-span-2 lg:col-span-3">
+            <div class="flex items-center justify-center">
+                <i class="ri-information-line text-red-600 dark:text-red-400 text-xl mr-2"></i>
+                <p class="text-gray-700 dark:text-gray-300 text-center">
+                    If you have any questions about funding, assessments, or program details, feel free to contact us. We're here to make the process easy and stress-free.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Parallax Background Section 2: WHY CHOOSE US (updated) -->
+    <section class="parallax-section relative py-24 md:py-32" style="background-image: url('https://images.pexels.com/photos/7551621/pexels-photo-7551621.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="parallax-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-8">
+                    <i class="ri-star-smile-line text-3xl"></i>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">WHY CHOOSE US</h2>
+                <div class="w-24 h-1 bg-white/50 rounded-full mx-auto mb-8"></div>
+                
+                <p class="text-xl md:text-2xl leading-relaxed text-white/95 mb-6">
+                    At Eternity Care Services, we believe that every individual deserves the opportunity to live a fulfilling and independent life. Our Day Program is designed to promote mental, physical, and emotional well-being while providing participants with the support and care they need. Whether you're looking for social interaction, skill development, or just a fun way to spend your day, our program is here to support you.
+                </p>
+            </div>
+        </div>
+    </section>
+<br>
+    <!-- Contact Us Today Section - FULL WIDTH, NO BORDER RADIUS, MEDIUM TEXT SIZES -->
+    <section class="w-full bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 py-16 md:py-20 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="ri-phone-line text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact Us Today</h2>
+                <p class="text-xl md:text-2xl leading-relaxed mb-8 text-white/90">
+                    Ready to learn more or book a spot in our Day Programs?
+                </p>
+                
+                <!-- Phone Number - Medium size -->
+                <div class="flex justify-center mb-8">
+                    <a href="tel:1300 799 885" class="text-4xl md:text-5xl font-bold text-white hover:underline flex items-center">
+                        <i class="ri-phone-line mr-4 text-3xl"></i>
+                       1300 799 885
+                    </a>
+                </div>
+
+                <!-- Description - Medium text -->
+                <p class="text-white/90 text-lg max-w-3xl mx-auto mb-10">
+                    At Eternity Care Services, we believe that every individual deserves the opportunity to live a fulfilling and independent life. Our Day Program is designed to promote mental, physical, and emotional well-being while providing participants with the support and care they need. Join us to enhance your daily life through engaging activities and compassionate support.
+                </p>
+
+                <!-- Final CTA Button - Medium size -->
+                <div>
+                    <a href="/contact-form" class="btn-hover inline-flex items-center bg-white text-blue-700 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xl">
+                        <i class="ri-calendar-check-line mr-2"></i>
+                        Join Our Day Program Today!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+<%- include('../footer.ejs') %> 
+    <!-- Theme Toggle JavaScript (matches header system) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Theme initialization
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+                
+                if (currentTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    updateThemeUI('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeUI('light');
+                }
+            }
+            
+            // Update UI elements
+            function updateThemeUI(theme) {
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                
+                if (themeIcon) {
+                    themeIcon.className = theme === 'dark' ? 'ri-sun-line mr-2 text-lg' : 'ri-moon-line mr-2 text-lg';
+                }
+                if (themeText) {
+                    themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+                }
+            }
+            
+            // Toggle theme
+            window.toggleTheme = function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                    updateThemeUI('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    updateThemeUI('dark');
+                }
+            };
+
+            // Event listeners
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.toggleTheme();
+                    });
+                }
+            }
+
+            // Initialize on load
+            document.addEventListener('DOMContentLoaded', function() {
+                initTheme();
+                initThemeToggle();
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                        updateThemeUI('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        updateThemeUI('light');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

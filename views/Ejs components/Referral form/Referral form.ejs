@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Form | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition for all elements */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Better dark mode contrast */
+        .dark body {
+            color-scheme: dark;
+        }
+
+        /* Hero image overlay - matches header */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(37, 99, 235, 0.75) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        .dark .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.85) 50%, rgba(37, 99, 235, 0.8) 100%);
+        }
+
+        /* Form input focus effect */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            border-color: #2563eb;
+        }
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+            border-color: #3b82f6;
+        }
+
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Required field indicator */
+        .required::after {
+            content: "*";
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        /* Validation styling */
+        .form-input:invalid:not(:placeholder-shown):not(:focus) {
+            border-color: #ef4444;
+        }
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: #10b981;
+        }
+        .dark .form-input:valid:not(:placeholder-shown) {
+            border-color: #34d399;
+        }
+        
+        /* Required star styling */
+        .required-star {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+
+<%- include('../header.ejs') %> 
+<br>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen font-sans antialiased">
+
+   
+    <!-- Hero Section with Unsplash Image - Referral and support -->
+    <section class="relative w-full h-80 lg:h-96 overflow-hidden">
+        <!-- Pexels Image: Support coordinator working with client -->
+        <img src="https://plus.unsplash.com/premium_photo-1681842991911-66a214eda9ff?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Support coordinator helping with referral" 
+             class="absolute inset-0 w-full h-full object-cover object-center"
+             loading="lazy">
+        <!-- Blue Gradient Overlay - matches header theme -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+                <i class="ri-file-text-line text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 drop-shadow-lg">
+                REFERRAL FORM
+            </h1>
+            <div class="w-24 h-1 bg-white rounded-full mb-4"></div>
+            <p class="text-white text-xl md:text-2xl max-w-2xl drop-shadow-md">
+               Connect with our care team
+            </p>
+        </div>
+    </section>
+
+   <!-- Form Section with validations -->
+<section class="container mx-auto px-4 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 dark:border-gray-700">
+            
+            <!-- Form Header -->
+            <div class="mb-10 text-center">
+                <div class="inline-flex items-center justify-center p-2 bg-[#97d700]/20 dark:bg-[#97d700]/30 rounded-full mb-4">
+                    <i class="ri-user-star-line text-[#97d700] dark:text-[#97d700] text-2xl"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
+                   Who is ready to be empowered?
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">
+                    Please include the details of the NDIS participant 
+                </p>
+            </div>
+
+          <form id="referralForm" class="space-y-8" onsubmit="return handleReferralSubmit(event)">
+    <!-- NDIS Participant Details Section -->
+    <div class="space-y-6">
+        <!-- Name of Participant (Required) -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                Name of Participant<span class="required-star">*</span>
+            </label>
+            <input type="text" 
+                   name="participantName"
+                   id="participantName"
+                   placeholder="Full Name Of Participant" 
+                   required
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- Date Of Birth -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                Date Of Birth
+            </label>
+            <input type="text" 
+                   name="dob"
+                   id="dob"
+                   placeholder="DD/MM/YYYY" 
+                   pattern="\d{2}/\d{2}/\d{4}"
+                   title="Please enter date in DD/MM/YYYY format"
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- Phone Number of Participant (Required) -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                Phone Number of Participant<span class="required-star">*</span>
+            </label>
+            <input type="tel" 
+                   name="participantPhone"
+                   id="participantPhone"
+                   placeholder="Phone" 
+                   required
+                   pattern="[0-9\s\+\-\(\)]{8,}"
+                   title="Please enter a valid phone number (minimum 8 digits)"
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                Email
+            </label>
+            <input type="email" 
+                   name="participantEmail"
+                   id="participantEmail"
+                   placeholder="Email" 
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address (e.g., name@domain.com)"
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- NDIS Number -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                NDIS Number
+            </label>
+            <input type="text" 
+                   name="ndisNumber"
+                   id="ndisNumber"
+                   placeholder="NDIS Number" 
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- Name of NDIS Plan Manager -->
+        <div>
+            <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                Name of NDIS Plan Manager
+            </label>
+            <input type="text" 
+                   name="planManager"
+                   id="planManager"
+                   placeholder="Full Name" 
+                   class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+        </div>
+
+        <!-- Address Section -->
+        <div class="pt-4">
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Address</h3>
+            
+            <!-- Street Address -->
+            <div class="mb-4">
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Street Address
+                </label>
+                <input type="text" 
+                       name="streetAddress"
+                       id="streetAddress"
+                       placeholder="Street Address" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Suburb -->
+            <div class="mb-4">
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Suburb
+                </label>
+                <input type="text" 
+                       name="suburb"
+                       id="suburb"
+                       placeholder="Location" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- State and Postal Code Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                        State
+                    </label>
+                    <input type="text" 
+                           name="state"
+                           id="state"
+                           placeholder="State" 
+                           class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                        Postal Code
+                    </label>
+                    <input type="text" 
+                           name="postalCode"
+                           id="postalCode"
+                           placeholder="Postal Code" 
+                           pattern="[0-9]{4}"
+                           title="Please enter a valid 4-digit postal code"
+                           class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details of Person Making Referral Section -->
+    <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="mb-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">
+                Details of Person Making Referral
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm italic">
+                If same as above, please leave blank. (Eg: Support Coordinator).
+            </p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- First Name -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    First Name
+                </label>
+                <input type="text" 
+                       name="referrerFirstName"
+                       id="referrerFirstName"
+                       placeholder="Full Name" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Last Name -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Last Name
+                </label>
+                <input type="text" 
+                       name="referrerLastName"
+                       id="referrerLastName"
+                       placeholder="Last Name" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Phone Number
+                </label>
+                <input type="tel" 
+                       name="referrerPhone"
+                       id="referrerPhone"
+                       placeholder="Phone" 
+                       pattern="[0-9\s\+\-\(\)]{8,}"
+                       title="Please enter a valid phone number (minimum 8 digits)"
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Email
+                </label>
+                <input type="email" 
+                       name="referrerEmail"
+                       id="referrerEmail"
+                       placeholder="Email" 
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                       title="Please enter a valid email address (e.g., name@domain.com)"
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Organization & Position -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Organization & Position
+                </label>
+                <input type="text" 
+                       name="organization"
+                       id="organization"
+                       placeholder="Organisation & Position" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+
+            <!-- Relationship to NDIS participant -->
+            <div>
+                <label class="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    Relationship to NDIS participant
+                </label>
+                <input type="text" 
+                       name="relationship"
+                       id="relationship"
+                       placeholder="Relationship to NDIS participant" 
+                       class="form-input w-full px-5 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none transition-all">
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Statement Section -->
+    <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="bg-[#97d700]/10 dark:bg-[#97d700]/20 rounded-2xl p-6">
+            <div class="flex items-start">
+                <i class="ri-shield-check-line text-[#97d700] dark:text-[#97d700] text-2xl mr-3 mt-1"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-3">Privacy Statement</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        At Eternity Care Services, your privacy matters to us. We are
+                        committed to protecting your personal information and handling
+                        it with care, respect and confidentiality in accordance with
+                        the Australian Privacy Act 1988 and the Australian Privacy Principles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="pt-6">
+        <button type="submit" id="referralSubmitBtn" class="btn-hover w-full bg-gradient-to-r from-[#97d700] to-[#7fb000] hover:from-[#7fb000] hover:to-[#6c9900] text-white font-bold py-5 px-6 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center text-xl">
+            <i class="ri-send-plane-fill mr-3"></i>
+            Submit Referral
+        </button>
+    </div>
+
+    <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+        Fields marked with <span class="text-red-500">*</span> are required
+    </p>
+</form>
+        </div>
+    </div>
+</section>
+
+<%- include('../footer.ejs') %> 
+
+    <!-- Theme Toggle JavaScript (matches header system) -->
+   <!-- ============================================ -->
+<!-- COMPLETE REFERRAL FORM JAVASCRIPT - COPY THIS -->
+<!-- ============================================ -->
+<script>
+    // ============================================
+    // REFERRAL FORM HANDLER
+    // ============================================
+    
+    // Toast notification function
+    function showToast(message, type = 'success') {
+        // Remove any existing toast
+        const existingToast = document.querySelector('.toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+        
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        // Add icon based on type
+        const icon = type === 'success' ? 'ri-checkbox-circle-fill' : 'ri-error-warning-fill';
+        const iconColor = type === 'success' ? 'text-green-500' : 'text-red-500';
+        
+        toast.innerHTML = `
+            <div class="flex items-start">
+                <i class="${icon} ${iconColor} text-2xl mr-3"></i>
+                <div>
+                    <p class="font-medium ${type === 'success' ? 'text-green-600' : 'text-red-600'} dark:text-white">
+                        ${type === 'success' ? 'Success!' : 'Error!'}
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mt-1">${message}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                    <i class="ri-close-line text-xl"></i>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.remove();
+            }
+        }, 5000);
+    }
+
+    // Handle referral form submission
+    async function handleReferralSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const submitButton = document.getElementById('referralSubmitBtn');
+        const originalButtonText = submitButton.innerHTML;
+        
+        // Get form values for validation
+        const participantName = formData.get('participantName');
+        const participantPhone = formData.get('participantPhone');
+        const participantEmail = formData.get('participantEmail');
+        const postalCode = formData.get('postalCode');
+        const dob = formData.get('dob');
+        const referrerEmail = formData.get('referrerEmail');
+        const referrerPhone = formData.get('referrerPhone');
+        
+        // Client-side validation for required fields
+        if (!participantName || !participantPhone) {
+            showToast('Participant name and phone number are required fields', 'error');
+            return false;
+        }
+        
+        // Phone validation for participant
+        const participantPhoneDigits = participantPhone.replace(/\D/g, '');
+        if (participantPhoneDigits.length < 8) {
+            showToast('Please enter a valid participant phone number (minimum 8 digits)', 'error');
+            return false;
+        }
+        
+        // Email validation if provided
+        if (participantEmail) {
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+            if (!emailRegex.test(participantEmail)) {
+                showToast('Please enter a valid email address for participant', 'error');
+                return false;
+            }
+        }
+        
+        // Email validation for referrer if provided
+        if (referrerEmail) {
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+            if (!emailRegex.test(referrerEmail)) {
+                showToast('Please enter a valid email address for referrer', 'error');
+                return false;
+            }
+        }
+        
+        // Phone validation for referrer if provided
+        if (referrerPhone) {
+            const referrerPhoneDigits = referrerPhone.replace(/\D/g, '');
+            if (referrerPhoneDigits.length < 8) {
+                showToast('Please enter a valid referrer phone number (minimum 8 digits)', 'error');
+                return false;
+            }
+        }
+        
+        // Postal code validation if provided
+        if (postalCode && !/^\d{4}$/.test(postalCode)) {
+            showToast('Please enter a valid 4-digit postal code', 'error');
+            return false;
+        }
+        
+        // DOB validation if provided
+        if (dob && !/^\d{2}\/\d{2}\/\d{4}$/.test(dob)) {
+            showToast('Please enter date of birth in DD/MM/YYYY format', 'error');
+            return false;
+        }
+        
+        // Show loading state
+        submitButton.innerHTML = '<i class="ri-loader-4-line animate-spin mr-3"></i> Submitting...';
+        submitButton.disabled = true;
+        
+        try {
+            // Convert FormData to URLSearchParams
+            const urlEncodedData = new URLSearchParams();
+            for (let [key, value] of formData.entries()) {
+                urlEncodedData.append(key, value);
+            }
+            
+            console.log('Sending referral data...', Object.fromEntries(formData.entries()));
+            
+            const response = await fetch('/referral-form', {
+                method: 'POST',
+                body: urlEncodedData,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            
+            // Try to parse JSON response
+            let result;
+            try {
+                result = await response.json();
+            } catch (e) {
+                console.error('Could not parse JSON response:', e);
+                result = { success: false, error: 'Server returned an invalid response' };
+            }
+            
+            if (response.ok && result.success) {
+                // Show success message
+                showToast(result.message || 'Thank you for your referral! Our team will contact you within 24-48 hours.', 'success');
+                form.reset(); // Clear the form
+                
+                // Reset validation styling
+                document.querySelectorAll('#referralForm input').forEach(input => {
+                    input.classList.remove('border-green-500', 'border-red-500');
+                });
+                
+                // Scroll to top to show the message
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // Show error message from server or default
+                showToast(result.error || result.message || 'An error occurred. Please try again.', 'error');
+                console.error('Server error:', result);
+            }
+        } catch (error) {
+            console.error('Fetch Error:', error);
+            showToast('Network error. Please check your connection and try again.', 'error');
+        } finally {
+            // Reset button
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+        }
+        
+        return false;
+    }
+
+    // Add real-time validation styling
+    document.addEventListener('DOMContentLoaded', function() {
+        const referralForm = document.getElementById('referralForm');
+        if (referralForm) {
+            // Add submit event listener (in addition to onsubmit attribute)
+            referralForm.addEventListener('submit', handleReferralSubmit);
+            
+            // Add input validation styling
+            const inputs = referralForm.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.add('border-green-500');
+                        this.classList.remove('border-red-500');
+                    } else {
+                        this.classList.add('border-red-500');
+                        this.classList.remove('border-green-500');
+                    }
+                });
+            });
+        }
+        
+        console.log('Referral form JavaScript loaded successfully');
+    });
+</script>
+
+<!-- Add toast styles -->
+<style>
+    .toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        max-width: 400px;
+    }
+    .dark .toast {
+        background: #1f2937;
+        color: white;
+    }
+    .toast.success {
+        border-left: 4px solid #10b981;
+    }
+    .toast.error {
+        border-left: 4px solid #ef4444;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Loading spinner animation */
+    .animate-spin {
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+</body>
+</html>

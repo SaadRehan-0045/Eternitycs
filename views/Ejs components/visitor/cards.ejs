@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Services | Best Home Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme transition */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Service card hover effects */
+        .service-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        
+        /* Service image container */
+        .service-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.5) 50%, transparent 100%);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dark .service-overlay {
+            background: linear-gradient(to top, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.6) 50%, transparent 100%);
+        }
+        
+        /* Section background */
+        .services-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .dark .services-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        /* Service badge colors */
+        .badge-blue { background-color: #3b82f6; }
+        .badge-purple { background-color: #8b5cf6; }
+        .badge-green { background-color: #10b981; }
+        .badge-amber { background-color: #f59e0b; }
+        .badge-pink { background-color: #ec4899; }
+        .badge-indigo { background-color: #6366f1; }
+        .badge-red { background-color: #ef4444; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Main Content - All Services -->
+    <div class="services-bg py-12 lg:py-20">
+        <div class="container mx-auto px-4">
+            
+            <!-- ========== DISABILITY SERVICES SECTION (TOP) ========== -->
+            <div class="mb-20">
+                <!-- Heading updated to DISABILITY CARE -->
+                <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white mb-4">
+                    DISABILITY CARE
+                </h1>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto mb-12"></div>
+                
+                <!-- Disability Services Grid - 3 columns with proper links from file1 -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                    <!-- Homecare (Support at Home) -->
+                    <a href="/homecare" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-blue text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">NDIS</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-home-heart-line text-xs sm:text-sm md:text-base lg:text-xl text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Homecare (Support at Home)</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Support with personal care and everyday living activities.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Personal care</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Daily living</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Companionship</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Community Access -->
+                    <a href="/community-access" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1657161102089-1b13806de5f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-green text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Social</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-group-line text-xs sm:text-sm md:text-base lg:text-xl text-green-600 dark:text-green-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Community Access</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Engaging in community, social, or recreational activities.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Social outings</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Recreation</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Community</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Disability Transport -->
+                    <a href="/disability-transport" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1732194439331-08ec61c4df4f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-purple text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Accessible</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-car-line text-xs sm:text-sm md:text-base lg:text-xl text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Transport</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Reliable and accessible transport tailored to your needs.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Wheelchair accessible</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Door-to-door</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Trained drivers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Support Coordination -->
+                    <a href="/support-coordination" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1664475808936-a5b56a8c3b58?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-amber text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">NDIS</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-amber-100 dark:bg-amber-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-compass-line text-xs sm:text-sm md:text-base lg:text-xl text-amber-600 dark:text-amber-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Support Coordination</h3>
+                                    <p class="text-[0.5rem] sm:text-xs text-primary-600 dark:text-primary-400 leading-tight">Psychosocial Recovery Coach</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Guiding you to make the most of your NDIS plan.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Plan management</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Provider connections</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Goal setting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Day Program -->
+                    <a href="/day-program" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1683140633722-9625a92dd1a3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-pink text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Creative</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-pink-100 dark:bg-pink-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-palette-line text-xs sm:text-sm md:text-base lg:text-xl text-pink-600 dark:text-pink-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Day Programs</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Art, music, and therapies to inspire growth and connection.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Art & music therapy</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Skill development</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Social connection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Mental Health Care -->
+                    <a href="/mental-health-care" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1661766873874-968139498244?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-purple text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Wellbeing</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-mental-health-line text-xs sm:text-sm md:text-base lg:text-xl text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Mental Health Care</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Specialised support for emotional and psychological wellbeing.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Therapy assistance</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Recovery coaching</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Daily coping skills</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Community Nursing -->
+                    <a href="/community-nursing" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1762955911431-4c44c7c3f408?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-blue text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Clinical</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-nurse-line text-xs sm:text-sm md:text-base lg:text-xl text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">Community Nursing</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Professional nursing care in the comfort of your home.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Wound care</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Medication management</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Health monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ========== ACCOMMODATION SERVICES SECTION ========== -->
+            <div class="mb-20">
+                <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white mb-4">
+                    Accommodation
+                </h1>
+                <div class="w-24 h-1 bg-primary-500 dark:bg-primary-400 mx-auto mb-12"></div>
+                
+                <!-- Accommodation Services Grid - with proper links from file1 -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                    <!-- SIL -->
+                    <a href="/sil" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1664474622840-39492463e502?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-blue text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">NDIS</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-blue-100 dark:bg-blue-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-home-4-line text-xs sm:text-sm md:text-base lg:text-xl text-blue-600 dark:text-blue-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">SIL</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Support for independent living in a safe, comfortable home.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">24/7 support</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Shared/individual</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Skill development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- SDA -->
+                    <a href="/sda" class="service-card bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+                        <div class="service-image-container h-32 sm:h-40 md:h-48 lg:h-56">
+                            <div class="service-image w-full h-full bg-cover bg-center" style="background-image: url('https://plus.unsplash.com/premium_photo-1683140423939-0cc31213e1d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                            <div class="service-overlay"></div>
+                            <div class="absolute top-2 left-2 sm:top-3 sm:left-3">
+                                <span class="badge-purple text-white text-[0.6rem] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">Specialist</span>
+                            </div>
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4 lg:p-5">
+                            <div class="flex items-center mb-1 sm:mb-2">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-purple-100 dark:bg-purple-900/40 rounded-full flex items-center justify-center mr-1 sm:mr-2">
+                                    <i class="ri-building-4-line text-xs sm:text-sm md:text-base lg:text-xl text-purple-600 dark:text-purple-400"></i>
+                                </div>
+                                <h3 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white">SDA</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mb-2 sm:mb-3 leading-tight">Housing designed for accessibility and independence.</p>
+                            <div class="space-y-1">
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Purpose-built</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">High physical support</span>
+                                </div>
+                                <div class="flex items-center text-[0.55rem] sm:text-xs">
+                                    <i class="ri-checkbox-circle-fill text-green-500 mr-1 text-[0.5rem] sm:text-xs"></i>
+                                    <span class="text-gray-600 dark:text-gray-400 truncate">Fully accessible</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme functionality
+        // Check for saved theme preference or use default
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Apply theme on page load
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // Service card hover effects (additional safeguard)
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const image = card.querySelector('.service-image');
+                if (image) {
+                    image.style.transform = 'scale(1.05)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const image = card.querySelector('.service-image');
+                if (image) {
+                    image.style.transform = 'scale(1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
